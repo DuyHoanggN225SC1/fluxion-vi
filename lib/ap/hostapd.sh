@@ -98,6 +98,8 @@ driver=nl80211
 ssid=$APServiceSSID
 channel=$APServiceChannel
 hw_mode=$__hwMode
+ieee80211n=1
+wmm_enabled=1
 $__extraConf" \
   > "$APServiceConfigDirectory/$APServiceMAC-hostapd.conf"
 

