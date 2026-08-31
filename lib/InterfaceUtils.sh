@@ -248,4 +248,43 @@ function interface_reidentify() {
   return $result
 }
 
+function interface_set_regdomain() {
+  local domain="${1:-BO}"
+  if command -v iw &>/dev/null; then
+    iw reg set "$domain" &>$InterfaceUtilsOutputDevice
+    return $?
+  fi
+  return 1
+}
+
+function interface_set_txpower() {
+  if [ "${#@}" -lt 1 ]; then return 1; fi
+  local iface="$1"
+  local txp="${2:-30}"
+
+  interface_set_regdomain "BO" 2>/dev/null
+
+  if command -v iwconfig &>/dev/null; then
+    iwconfig "$iface" txpower "$txp" &>$InterfaceUtilsOutputDevice
+  fi
+  if command -v iw &>/dev/null; then
+    iw dev "$iface" set txpower fixed "${txp}00" &>$InterfaceUtilsOutputDevice
+  fi
+  return 0
+}
+
+function interface_set_random_mac() {
+  if [ ! "$1" ]; then return 1; fi
+  local iface="$1"
+  interface_set_state "$iface" "down" 2>/dev/null
+  if command -v macchanger &>/dev/null; then
+    macchanger -r "$iface" &>$InterfaceUtilsOutputDevice
+  else
+    local randMac=$(printf '02:%02x:%02x:%02x:%02x:%02x' $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256)) $((RANDOM%256)))
+    ip link set dev "$iface" address "$randMac" 2>/dev/null || iwconfig "$iface" hw ether "$randMac" 2>/dev/null
+  fi
+  interface_set_state "$iface" "up" 2>/dev/null
+  return 0
+}
+
 # FLUXSCRIPT END

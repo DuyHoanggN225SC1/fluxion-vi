@@ -1257,6 +1257,9 @@ fluxion_allocate_interface() { # Reserve interfaces
   FluxionInterfaces[$newIdentifier]=$identifier
   FluxionInterfaces[$identifier]=$newIdentifier
 
+  # Randomize MAC address for anonymity and anti-tracking
+  interface_set_random_mac "$newIdentifier" 2>/dev/null
+
   echo -e "$FLUXIONVLine $FLUXIONInterfaceAllocatedNotice"
   sleep 3
 
@@ -1469,24 +1472,39 @@ fluxion_target_get_candidates() {
   # Assure a valid wireless interface for scanning was given.
   if [ ! "$1" ] || ! interface_is_wireless "$1"; then return 1; fi
 
+  local interface="$1"
+  local channelParam="${2:+--channel $2}"
+  local bandParam="${3:+--band $3}"
+  local encFilter="${4:-WPA}"
+  local scanDuration="${5:-$FLUXIONScanTime}"
+  local boostTx="${6:-1}"
+
+  if [ "$boostTx" = "1" ] || [ "$FLUXIONBoostTxPower" = "1" ]; then
+    echo -e "$FLUXIONVLine $FLUXIONTxPowerBoostingNotice"
+    interface_set_txpower "$interface" 30 2>/dev/null
+  fi
+
   echo -e "$FLUXIONVLine $FLUXIONStartingScannerNotice"
   echo -e "$FLUXIONVLine $FLUXIONStartingScannerTip"
 
   # Assure all previous scan results have been cleared.
   sandbox_remove_workfile "$FLUXIONWorkspacePath/dump*"
 
+  local filterParam="-t WPA"
+  if [ "${encFilter^^}" = "ALL" ]; then
+    filterParam=""
+  fi
+
   # Begin scanner and output all results to "dump-01.csv."
-  local channelParam="${2:+--channel $2}"
-  local bandParam="${3:+--band $3}"
-  local scanCmd="airodump-ng -Mat WPA $channelParam $bandParam -w \"$FLUXIONWorkspacePath/dump\" $1"
+  local scanCmd="airodump-ng -M $filterParam $channelParam $bandParam -w \"$FLUXIONWorkspacePath/dump\" $interface"
 
   if [ "$FLUXIONAuto" ]; then
-    # In auto mode, run scanner for --scan-time seconds then kill it.
-    fluxion_status "SCAN_START interface=$1 duration=${FLUXIONScanTime}s"
+    # In auto mode, run scanner for scanDuration seconds then kill it.
+    fluxion_status "SCAN_START interface=$interface duration=${scanDuration}s"
     local scannerPID
     fluxion_window_open scannerPID "$FLUXIONScannerHeader" \
       "$TOPLEFTBIG" "#000000" "#FFFFFF" "$scanCmd"
-    sleep "$FLUXIONScanTime"
+    sleep "$scanDuration"
     fluxion_window_close scannerPID
     # Give airodump-ng a moment to flush output files.
     sleep 1
@@ -1509,16 +1527,6 @@ fluxion_target_get_candidates() {
 
   # Syntheize scan opeFLUXIONWindowRation results from output file "dump-01.csv."
   echo -e "$FLUXIONVLine $FLUXIONPreparingScannerResultsNotice"
-  # WARNING: The code below may break with different version of airmon-ng.
-  # The times matching operator "{n}" isn't supported by mawk (alias awk).
-  # readarray FLUXIONTargetCandidates < <(
-  #   gawk -F, 'NF==15 && $1~/([A-F0-9]{2}:){5}[A-F0-9]{2}/ {print $0}'
-  #   $FLUXIONWorkspacePath/dump-01.csv
-  # )
-  # readarray FLUXIONTargetCandidatesClients < <(
-  #   gawk -F, 'NF==7 && $1~/([A-F0-9]{2}:){5}[A-F0-9]{2}/ {print $0}'
-  #   $FLUXIONWorkspacePath/dump-01.csv
-  # )
   local -r matchMAC="([A-F0-9][A-F0-9]:)+[A-F0-9][A-F0-9]"
   readarray FluxionTargetCandidates < <(
     awk -F, "NF>=15 && length(\$1)==17 && \$1~/$matchMAC/ {print \$0}" \
@@ -1528,9 +1536,6 @@ fluxion_target_get_candidates() {
     awk -F, "NF==7 && length(\$1)==17 && \$1~/$matchMAC/ {print \$0}" \
     "$FLUXIONWorkspacePath/dump-01.csv"
   )
-
-  # Note: Don't cleanup dump* files yet - we need dump-01.kismet.netxml
-  # for vendor lookup in fluxion_get_target()
 
   fluxion_status "SCAN_COMPLETE candidates=${#FluxionTargetCandidates[@]}"
 
@@ -1565,44 +1570,35 @@ fluxion_get_target() {
     else
       local band="bg"
     fi
-    fluxion_target_get_candidates $interface "$FluxionTargetChannel" "$band"
+    fluxion_target_get_candidates $interface "$FluxionTargetChannel" "$band" "WPA" "${FLUXIONScanTime:-20}" "1"
   else
-    interface_bands "$interface" 2>/dev/null
-    local __ifBands="${InterfaceBands:-unknown}"
-    local choices=()
-    if [[ "$__ifBands" == *"2.4GHz"* ]]; then
-      choices+=("$FLUXIONScannerChannelOptionAll (2.4GHz)")
-    fi
-    if [[ "$__ifBands" == *"5GHz"* ]]; then
-      choices+=("$FLUXIONScannerChannelOptionAll (5GHz)")
-    fi
-    if [[ "$__ifBands" == *"2.4GHz"* ]] && [[ "$__ifBands" == *"5GHz"* ]]; then
-      choices+=("$FLUXIONScannerChannelOptionAll (2.4GHz & 5Ghz)")
-    fi
-    if [ ${#choices[@]} -eq 0 ]; then
-      choices+=( \
-        "$FLUXIONScannerChannelOptionAll (2.4GHz)" \
-        "$FLUXIONScannerChannelOptionAll (5GHz)" \
-        "$FLUXIONScannerChannelOptionAll (2.4GHz & 5Ghz)" \
-      )
-    fi
-    choices+=("$FLUXIONScannerChannelOptionSpecific" "$FLUXIONGeneralBackOption")
+    local choices=(
+      "$FLUXIONScannerOptionHighPower"
+      "$FLUXIONScannerOptionStandard"
+      "$FLUXIONScannerOptionAllEnc"
+      "$FLUXIONScannerOptionDeep"
+      "$FLUXIONScannerChannelOptionSpecific"
+      "$FLUXIONGeneralBackOption"
+    )
 
-    io_query_choice "$FLUXIONScannerChannelQuery" choices[@]
+    io_query_choice "$FLUXIONScannerModeQuery" choices[@]
 
     echo
 
     case "$IOQueryChoice" in
-      "$FLUXIONScannerChannelOptionAll (2.4GHz)")
-        fluxion_target_get_candidates $interface "" "bg";;
+      "$FLUXIONScannerOptionHighPower")
+        fluxion_target_get_candidates "$interface" "" "abg" "WPA" "${FLUXIONScanTime:-20}" "1";;
 
-      "$FLUXIONScannerChannelOptionAll (5GHz)")
-        fluxion_target_get_candidates $interface "" "a";;
+      "$FLUXIONScannerOptionStandard")
+        fluxion_target_get_candidates "$interface" "" "bg" "WPA" "${FLUXIONScanTime:-20}" "0";;
 
-      "$FLUXIONScannerChannelOptionAll (2.4GHz & 5Ghz)")
-        fluxion_target_get_candidates $interface "" "abg";;
+      "$FLUXIONScannerOptionAllEnc")
+        fluxion_target_get_candidates "$interface" "" "abg" "ALL" "${FLUXIONScanTime:-20}" "1";;
 
-      "$FLUXIONScannerChannelOptionSpecific")
+      "$FLUXIONScannerOptionDeep")
+        fluxion_target_get_candidates "$interface" "" "abg" "WPA" "40" "1";;
+
+      "$FLUXIONScannerOptionSpecific")
         fluxion_header
 
         echo -e "$FLUXIONVLine $FLUXIONScannerChannelQuery"
@@ -1630,7 +1626,7 @@ fluxion_get_target() {
           fi
         fi
 
-        fluxion_target_get_candidates $interface $channels "$band";;
+        fluxion_target_get_candidates "$interface" "$channels" "$band" "WPA" "${FLUXIONScanTime:-20}" "1";;
 
       "$FLUXIONGeneralBackOption")
         return -1;;
@@ -1737,11 +1733,21 @@ fluxion_get_target() {
       grep -c "${candidatesMAC[i]}"
     )
     local __ch=$(echo "$candidateAPInfo" | cut -d , -f 4 | tr -d ' ')
+    local __chVal=$(echo "$__ch" | grep -oE '[0-9]+' | head -1)
+    local __bandTag=""
+    if [ -n "$__chVal" ]; then
+      if [ "$__chVal" -le 14 ]; then
+        __bandTag="2.4G"
+      else
+        __bandTag="5G"
+      fi
+    fi
+
     if [ "$__ch" -ge 52 -a "$__ch" -le 64 ] 2>/dev/null || \
        [ "$__ch" -ge 100 -a "$__ch" -le 144 ] 2>/dev/null; then
-      candidatesChannel[i]="${__ch}!"
+      candidatesChannel[i]="${__ch}! ${__bandTag}"
     else
-      candidatesChannel[i]="$__ch"
+      candidatesChannel[i]="${__ch} ${__bandTag}"
     fi
     candidatesSecurity[i]=$(echo "$candidateAPInfo" | cut -d , -f 6)
     candidatesPower[i]=$(echo "$candidateAPInfo" | cut -d , -f 9)
@@ -1826,11 +1832,11 @@ fluxion_get_target() {
   done
 
   local -r headerFields=$(
-    printf "$CRed[$CSYel ** $CClr$CRed]$CClr %2s %-${__essidMaxLen}s %4s %3s %3s %4s %-8s %-17s %-${__vendorMaxLen}s\n" \
+    printf "$CRed[$CSYel ** $CClr$CRed]$CClr %2s %-${__essidMaxLen}s %4s %3s %3s %8s %-8s %-17s %-${__vendorMaxLen}s\n" \
       "HS" "ESSID" "QLTY" "PWR" "STA" "CH" "SECURITY" "BSSID" "VENDOR"
   )
 
-  local -r __dataFormat="$CRed[$CSYel%03d$CClr$CRed]%b  %2s %-${__essidMaxLen}.${__essidMaxLen}s %3s%% %3s %3d %4s %-8.8s %-17s %-${__vendorMaxLen}.${__vendorMaxLen}s\n"
+  local -r __dataFormat="$CRed[$CSYel%03d$CClr$CRed]%b  %2s %-${__essidMaxLen}.${__essidMaxLen}s %3s%% %3s %3d %8s %-8.8s %-17s %-${__vendorMaxLen}.${__vendorMaxLen}s\n"
   FormatApplyAutosize="$__dataFormat"
 
   if [ "$FLUXIONAuto" ]; then
@@ -1852,7 +1858,7 @@ fluxion_get_target() {
 
     FluxionTargetMAC=${candidatesMAC[$autoTargetIndex]}
     FluxionTargetSSID=${candidatesESSID[$autoTargetIndex]}
-    FluxionTargetChannel=${candidatesChannel[$autoTargetIndex]//!/}
+    FluxionTargetChannel=$(echo "${candidatesChannel[$autoTargetIndex]}" | grep -oE '[0-9]+' | head -1)
     fluxion_status "TARGET_SELECTED ssid=$FluxionTargetSSID bssid=$FluxionTargetMAC channel=$FluxionTargetChannel"
   else
     io_query_format_fields "$headerTitle$headerFields" \
@@ -1872,7 +1878,7 @@ fluxion_get_target() {
 
     FluxionTargetMAC=${IOQueryFormatFields[8]}
     FluxionTargetSSID=${IOQueryFormatFields[2]}
-    FluxionTargetChannel=${IOQueryFormatFields[6]//!/}
+    FluxionTargetChannel=$(echo "${IOQueryFormatFields[6]}" | grep -oE '[0-9]+' | head -1)
   fi
 
   if [ "$FLUXIONAuto" ]; then

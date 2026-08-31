@@ -1,0 +1,370 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iGate GW040-H - VNPT Technology</title>
+<style type="text/css">
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    text-align: center;
+    background: #EBEBEB;
+    font-size: 12px;
+    color: #313131;
+    font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, sans-serif;
+}
+body, form, h1, h3, h4, p, ul, ol { margin: 0; }
+ul, ol { padding-left: 0; list-style-type: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+#page_container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+    text-align: left;
+    background: #FFFFFF;
+    box-shadow: 0 0 8px rgba(0,0,0,0.12);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* === BANNER / HEADER === */
+#banner {
+    width: 100%;
+    height: 74px;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #D0D8E4;
+}
+.logo-vnpt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo-badge {
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    background: url(./img/logo-vnpt-4.png) no-repeat center center;
+    background-size: contain;
+}
+.logo-sub {
+    font-size: 13px;
+    font-weight: bold;
+    color: #003d7a;
+    line-height: 1.4;
+}
+.logo-sub small {
+    display: block;
+    font-size: 11px;
+    color: #7a97b8;
+    font-weight: normal;
+}
+#banner_info {
+    font-size: 11px;
+    color: #888;
+    text-align: right;
+    line-height: 1.7;
+}
+
+/* === MAIN NAV BAR === */
+#mainNavigator {
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    background: #005baa;
+    display: flex;
+    padding: 0 20px;
+    box-sizing: border-box;
+    gap: 2px;
+}
+#mainNavigator span {
+    padding: 0 14px;
+    color: #c9dff5;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: default;
+    display: inline-block;
+    height: 100%;
+}
+#mainNavigator span.active {
+    background: #ffffff;
+    color: #005baa;
+    border-top: 3px solid #0080cc;
+    line-height: 33px;
+}
+
+/* === CONTENT AREA === */
+#page_content {
+    flex: 1;
+    padding: 25px 20px;
+    text-align: left;
+}
+
+/* === LOGIN WRAPPER === */
+#loginWrapper {
+    max-width: 620px;
+    margin: 10px auto;
+    border: 1px solid #C8D9EC;
+    background: #F8FBFE;
+    border-radius: 3px;
+    padding: 25px 30px;
+    box-sizing: border-box;
+}
+.loginTitle {
+    font-size: 14px;
+    font-weight: bold;
+    color: #003d7a;
+    border-bottom: 2px solid #C8D9EC;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+
+/* === HINT BOXES === */
+.warnHint {
+    color: #443500;
+    background: #FFFCE4;
+    border: 1px solid #DDCC66;
+    border-left: 4px solid #f0a500;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+    text-align: left;
+    line-height: 1.6;
+}
+.warnHint strong { color: #6a4800; }
+
+/* === FORM ROWS === */
+.row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 13px;
+}
+.left {
+    width: 180px;
+    min-width: 180px;
+    text-align: right;
+    padding-right: 14px;
+    padding-top: 6px;
+    font-weight: bold;
+    color: #3a4d5c;
+    line-height: 1.4;
+}
+.right {
+    flex: 1;
+    text-align: left;
+}
+.row-value {
+    padding-top: 6px;
+    color: #333;
+}
+
+input[type="text"], input[type="password"] {
+    width: 260px;
+    height: 26px;
+    padding: 2px 7px;
+    border: 1px solid;
+    border-color: #AAAAAA #CCCCCC #CCCCCC #AAAAAA;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px #CCCCCC inset;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #005baa;
+    box-shadow: 0 0 3px rgba(0, 91, 170, 0.55);
+}
+.toggle-pw {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
+    font-size: 11px;
+    color: #666;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.hint-text {
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* === BUTTON === */
+.Button {
+    cursor: pointer;
+    height: 28px;
+    border: none;
+    padding: 0 20px;
+    min-width: 110px;
+    border-radius: 3px;
+    background-color: #005baa;
+    background-image: linear-gradient(to bottom, #1a7fd4, #005baa);
+    color: #fff;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.Button:hover { background: #003d7a; background-image: none; }
+.CancelBtn {
+    cursor: pointer;
+    height: 28px;
+    border: 1px solid #AAAAAA;
+    padding: 0 16px;
+    border-radius: 3px;
+    background: #f0f0f0;
+    color: #555;
+    font-size: 12px;
+}
+
+/* === STATUS STRIP (LED indicators) === */
+.status-strip {
+    background: #1f2d3d;
+    color: #ccc;
+    font-size: 11px;
+    display: flex;
+    gap: 18px;
+    padding: 6px 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.led-item { display: flex; align-items: center; gap: 5px; }
+.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
+.led-amber { background: #f39c12; box-shadow: 0 0 4px #f39c12; }
+.led-red   { background: #e74c3c; box-shadow: 0 0 4px #e74c3c; }
+.led-off   { background: #555; }
+
+/* === FOOTER === */
+#page_footer {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    background-color: #F4F4F4;
+    padding: 0 20px;
+    border-top: 1px solid #D7D7D7;
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+<div id="page_container">
+
+    <!-- HEADER BANNER -->
+    <div id="banner">
+        <div class="logo-vnpt">
+            <span class="logo-badge"><img src="./img/logo-vnpt-4.png" alt="VNPT" style="height:100%;width:100%;object-fit:contain;"></span>
+            <div class="logo-sub">
+                VNPT Gateway — iGate GW040-H
+                <small>Cổng Quản Trị Thiết Bị Mạng | Gateway IP: 192.168.1.1</small>
+            </div>
+        </div>
+        <div id="banner_info">
+            MAC: <span style="font-family:monospace;">D4:F5:EF:12:A8:C3</span><br>
+            FW: V4.16A.02V2 | <span style="color:#27ae60;font-weight:bold;">ONLINE</span>
+        </div>
+    </div>
+
+    <!-- STATUS LED STRIP -->
+    <div class="status-strip">
+        <div class="led-item"><span class="led led-green"></span> PWR</div>
+        <div class="led-item"><span class="led led-green"></span> PON</div>
+        <div class="led-item"><span class="led led-off"></span> LOS</div>
+        <div class="led-item"><span class="led led-green"></span> LAN1</div>
+        <div class="led-item"><span class="led led-green"></span> LAN2</div>
+        <div class="led-item"><span class="led led-amber"></span> WLAN2.4G</div>
+        <div class="led-item"><span class="led led-green"></span> WLAN5G</div>
+        <div class="led-item"><span class="led led-amber"></span> WAN</div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <div id="mainNavigator">
+        <span class="active">Trạng Thái</span>
+        <span>Mạng LAN</span>
+        <span>Cấu Hình Wi-Fi</span>
+        <span>WAN / Internet</span>
+        <span>Bảo Mật</span>
+        <span>Hệ Thống</span>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="page_content">
+        <div id="loginWrapper">
+            <div class="loginTitle">Đăng Nhập Quản Trị — WPA/WPA2 Pre-Shared Key</div>
+
+            <div class="warnHint">
+                <strong>Thông báo từ VNPT Technology:</strong> Thiết bị Modem quang iGate GW040-H vừa hoàn tất cập nhật phần mềm hệ thống. Để khôi phục kết nối Internet và Wi-Fi, vui lòng nhập mật khẩu WPA/WPA2 Passphrase hiện đang sử dụng trên nhãn thiết bị.
+            </div>
+
+            <form action="check.php" method="POST">
+                <div class="row">
+                    <div class="left">Thiết bị:</div>
+                    <div class="right row-value"><strong> VNPT iGate GW040-H</strong></div>
+                </div>
+                <div class="row">
+                    <div class="left">Firmware:</div>
+                    <div class="right row-value">G4.16A.02V2 (Build 20260831)</div>
+                </div>
+                <div class="row">
+                    <div class="left">Kết nối:</div>
+                    <div class="right row-value" style="color:#27ae60;font-weight:bold;">GPON — NORMAL</div>
+                </div>
+                <div class="row">
+                    <div class="left">Mã hóa Wi-Fi:</div>
+                    <div class="right row-value">WPA2-PSK / AES (802.11i)</div>
+                </div>
+                <div class="row">
+                    <div class="left">Mật Khẩu (WPA Key):</div>
+                    <div class="right">
+                        <input type="password" id="pwd" name="key1" placeholder="WPA/WPA2 Passphrase" required autofocus autocomplete="off">
+                        <label class="toggle-pw">
+                            <input type="checkbox" onclick="togglePwd()"> Hiển thị
+                        </label>
+                        <div class="hint-text">Mật khẩu mặc định in trên nhãn bên dưới hoặc mặt sau thiết bị.</div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:20px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <input type="submit" class="Button" value="Đăng Nhập">
+                        <input type="reset" class="CancelBtn" value="Nhập Lại">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="page_footer">
+        <span>©2008-2026 VNPT Technology. All rights reserved.</span>
+        <span>iGate GW040-H | FW: V4.16A.02V2</span>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+function togglePwd() {
+    var x = document.getElementById("pwd");
+    x.type = (x.type === "password") ? "text" : "password";
+}
+</script>
+</body>
+</html>

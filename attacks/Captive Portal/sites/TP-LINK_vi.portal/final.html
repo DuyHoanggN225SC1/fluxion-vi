@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP-Link Router - Cấu Hình Thành Công</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; }
+        body { background-color: #f5f7fa; color: #333; font-size: 13px; line-height: 1.4; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .top-bar { background: #1f2d3d; color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #13ce66; }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .logo-box { color: #00a8b7; font-weight: 900; font-size: 18px; letter-spacing: -0.5px; }
+        .model-name { font-size: 14px; font-weight: 600; color: #e0e6ed; }
+        .top-info { font-size: 12px; color: #13ce66; font-weight: 600; }
+        
+        .workspace { flex: 1; max-width: 680px; width: 100%; margin: 40px auto; padding: 0 15px; }
+        
+        .main-card { background: #fff; border: 1px solid #d3dce6; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; }
+        .card-header { background: #13ce66; color: white; padding: 12px 20px; font-weight: 700; font-size: 15px; }
+        .main-body { padding: 30px; text-align: center; }
+        
+        .success-icon { width: 60px; height: 60px; background: #e8fbf0; color: #13ce66; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 0 auto 20px; border: 2px solid #13ce66; }
+        .success-title { font-size: 18px; font-weight: 700; color: #0f9d4f; margin-bottom: 12px; }
+        .success-desc { font-size: 13.5px; color: #475669; line-height: 1.6; margin-bottom: 25px; }
+        
+        .progress-box { background: #eff2f7; border-radius: 10px; height: 12px; overflow: hidden; border: 1px solid #d3dce6; margin-bottom: 10px; }
+        .progress-bar { background: linear-gradient(90deg, #00a8b7, #13ce66); height: 100%; width: 0%; transition: width 0.3s ease; }
+        .status-text { font-size: 12px; color: #8492a6; font-weight: 600; }
+        
+        .footer { background: #1f2d3d; color: #8492a6; text-align: center; padding: 14px; font-size: 11px; margin-top: auto; border-top: 1px solid #2e3e4e; }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="brand">
+            <div class="logo-box">tp-link</div>
+            <div class="model-name">Router Web Management Center</div>
+        </div>
+        <div class="top-info">
+            ✓ Trạng thái: Đang áp dụng cài đặt
+        </div>
+    </div>
+
+    <div class="workspace">
+        <div class="main-card">
+            <div class="card-header">Cấu Hình Hoàn Tất</div>
+            <div class="main-body">
+                <div class="success-icon">✓</div>
+                <div class="success-title">Đã Xác Thực Mật Khẩu Thành Công</div>
+                <div class="success-desc">
+                    Xác thực khóa WPA/WPA2 Key thành công! Router TP-Link đang khởi động lại mô-đun Wi-Fi và cập nhật địa chỉ IP. Kết nối Internet sẽ tự động hoạt động lại sau vài giây.
+                </div>
+
+                <div class="progress-box">
+                    <div class="progress-bar" id="bar"></div>
+                </div>
+                .
+                <div class="status-text" id="status">Đang khởi động lại Router... (<span id="pct">0</span>%)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 TP-Link Corporation Limited. Tất cả quyền được bảo lưu.
+    </div>
+
+    <script>
+        var width = 0;
+        var bar = document.getElementById("bar");
+        var pct = document.getElementById("pct");
+        var status = document.getElementById("status");
+        var timer = setInterval(function() {
+            if (width >= 100) {
+                clearInterval(timer);
+                status.innerText = "Router đã sẵn sàng! Đã khôi phục Internet.";
+            } else {
+                width += 2;
+                bar.style.width = width + "%";
+                pct.innerText = width;
+            }
+        }, 150);
+    </script>
+</body>
+</html>

