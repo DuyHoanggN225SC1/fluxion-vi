@@ -1,0 +1,98 @@
+#!/usr/bin/env bash
+# Vietnamese
+# native: Tiếng Việt
+# Việt hoá bởi xDuyHoangg
+
+FLUXIONInterfaceQuery="Chọn một giao diện mạng không dây"
+FLUXIONAllocatingInterfaceNotice="Đang cấp phát giao diện mạng đã đặt trước $CGrn\"\$interfaceIdentifier\"."
+FLUXIONDeallocatingInterfaceNotice="Đang giải phóng giao diện mạng đã đặt trước $CGrn\"\$interfaceIdentifier\"."
+FLUXIONInterfaceAllocatedNotice="${CGrn}Cấp phát giao diện mạng thành công!"
+FLUXIONInterfaceAllocationFailedError="${CRed}Đặt trước giao diện mạng thất bại!"
+FLUXIONReidentifyingInterface="Đang đổi tên giao diện mạng."
+FLUXIONUnblockingWINotice="Đang bỏ chặn tất cả các giao diện mạng không dây."
+FLUXIONRemovingExtraWINotice="Đang xóa các giao diện mạng không dây dư thừa..."
+FLUXIONFindingWINotice="Đang tìm các giao diện mạng không dây khả dụng..."
+FLUXIONSelectedBusyWIError="Giao diện mạng không dây được chọn hiện đang được sử dụng!"
+FLUXIONSelectedBusyWITip="Điều này thường do trình quản lý mạng đang sử dụng giao diện được chọn. Chúng tôi khuyên bạn nên$CGrn dừng trình quản lý mạng một cách an toàn$CClr hoặc cấu hình để nó bỏ qua giao diện này. Hoặc chạy \"export FLUXIONWIKillProcesses=1\" trước khi chạy fluxion để buộc tắt, nhưng chúng tôi khuyên bạn$CRed nên tránh dùng cờ diệt tiến trình này${CClr}."
+FLUXIONGatheringWIInfoNotice="Đang thu thập thông tin giao diện mạng..."
+FLUXIONUnknownWIDriverError="Không thể xác định trình điều khiển (driver) của giao diện mạng!"
+FLUXIONUnloadingWIDriverNotice="Đang chờ giao diện \"\$interface\" hủy tải..."
+FLUXIONLoadingWIDriverNotice="Đang chờ giao diện \"\$interface\" tải..."
+FLUXIONFindingConflictingProcessesNotice="Đang tìm các dịch vụ gây xung đột..."
+FLUXIONKillingConflictingProcessesNotice="Đang buộc dừng các dịch vụ gây xung đột..."
+FLUXIONPhysicalWIDeviceUnknownError="${CRed}Không thể xác định thiết bị vật lý của giao diện mạng!"
+FLUXIONStartingWIMonitorNotice="Đang khởi chạy giao diện giám sát (monitor)..."
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONTargetSearchingInterfaceQuery="Chọn một giao diện mạng không dây để quét mục tiêu."
+FLUXIONTargetTrackerInterfaceQuery="Chọn một giao diện mạng không dây để theo dõi mục tiêu."
+FLUXIONTargetTrackerInterfaceQueryTip="${CSYel}Có thể cần phải chọn một giao diện mạng chuyên dụng.$CClr"
+FLUXIONTargetTrackerInterfaceQueryTip2="${CBRed}Nếu bạn không chắc chắn, hãy chọn \"${CBYel}Bỏ qua${CBRed}\"!$CClr"
+FLUXIONIncompleteTargettingInfoNotice="Thiếu thông tin ESSID, BSSID hoặc kênh!"
+FLUXIONTargettingAccessPointAboveNotice="Fluxion đang nhắm mục tiêu vào điểm truy cập ở trên."
+FLUXIONContinueWithTargetQuery="Tiếp tục với mục tiêu này?"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONStartingScannerNotice="Đang khởi chạy bộ quét, vui lòng chờ..."
+FLUXIONStartingScannerTip="5 giây sau khi AP mục tiêu xuất hiện, hãy đóng bộ quét FLUXION (ctrl+c)."
+FLUXIONPreparingScannerResultsNotice="Đang tổng hợp kết quả quét, vui lòng chờ..."
+FLUXIONScannerFailedNotice="Card mạng không dây có thể không được hỗ trợ (không tìm thấy AP nào)"
+FLUXIONScannerDetectedNothingNotice="Không phát hiện điểm truy cập nào, đang quay lại..."
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONHashFileDoesNotExistError="Tệp băm (hash file) không tồn tại!"
+FLUXIONHashInvalidError="${CRed}Lỗi$CClr, tệp băm không hợp lệ!"
+FLUXIONHashValidNotice="${CGrn}Thành công$CClr, xác minh tệp băm hoàn tất!"
+FLUXIONPathToHandshakeFileQuery="Nhập đường dẫn đến tệp handshake $CClr(Ví dụ: /path/to/file.cap)"
+FLUXIONPathToHandshakeFileReturnTip="Để quay lại, hãy để trống đường dẫn băm."
+FLUXIONAbsolutePathInfo="Đường dẫn tuyệt đối"
+FLUXIONEmptyOrNonExistentHashError="${CRed}Lỗi$CClr, đường dẫn trỏ đến tệp băm không tồn tại hoặc rỗng."
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONScannerChannelQuery="Chọn kênh cần giám sát"
+FLUXIONScannerChannelOptionAll="Tất cả các kênh"
+FLUXIONScannerChannelOptionSpecific="Kênh cụ thể"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONScannerChannelSingleTip="Kênh đơn"
+FLUXIONScannerChannelMiltipleTip="Nhiều kênh"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONScannerHeader="Bộ quét FLUXION"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONHashSourceQuery="Chọn phương thức lấy tệp handshake"
+FLUXIONHashSourcePathOption="Đường dẫn tới tệp bắt gói tin (capture file)"
+FLUXIONHashSourceRescanOption="Quét lại thư mục handshake"
+FLUXIONFoundHashNotice="Đã tìm thấy tệp băm cho AP mục tiêu."
+FLUXIONUseFoundHashQuery="Bạn có muốn sử dụng tệp này không?"
+FLUXIONUseFoundHashOption="Sử dụng tệp băm tìm thấy"
+FLUXIONSpecifyHashPathOption="Chỉ định đường dẫn tới tệp băm"
+FLUXIONHashVerificationMethodQuery="Chọn phương thức xác minh tệp băm"
+FLUXIONHashVerificationMethodPyritOption="Xác minh bằng pyrit"
+FLUXIONHashVerificationMethodAircrackOption="Xác minh bằng aircrack-ng (${CYel}không tin cậy$CClr)"
+FLUXIONHashVerificationMethodCowpattyOption="Xác minh bằng cowpatty (${CGrn}khuyên dùng$CClr)"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONAttackQuery="Chọn cuộc tấn công không dây cho điểm truy cập"
+FLUXIONAttackInProgressNotice="Đang thực hiện cuộc tấn công ${CCyn}\$FluxionAttack$CClr..."
+FLUXIONSelectAnotherAttackOption="Chọn cuộc tấn công khác"
+FLUXIONAttackResumeQuery="Cuộc tấn công này đã được cấu hình trước đó."
+FLUXIONAttackRestoreOption="Khôi phục cuộc tấn công"
+FLUXIONAttackResetOption="Đặt lại cuộc tấn công"
+FLUXIONAttackRestartOption="Khởi động lại"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONGeneralSkipOption="${CYel}Bỏ qua"
+FLUXIONGeneralBackOption="${CRed}Quay lại"
+FLUXIONGeneralExitOption="${CRed}Thoát"
+FLUXIONGeneralRepeatOption="${CRed}Lặp lại"
+FLUXIONGeneralNotFoundError="Không tìm thấy"
+FLUXIONGeneralXTermFailureError="${CRed}Không thể khởi chạy phiên xterm (có thể do cấu hình sai)."
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+FLUXIONCleanupAndClosingNotice="Đang dọn dẹp và đóng"
+FLUXIONKillingProcessNotice="Đang buộc dừng ${CGry}\$targetID$CClr"
+FLUXIONRestoringPackageManagerNotice="Đang khôi phục ${CCyn}\$PackageManagerCLT$CClr"
+FLUXIONDisablingMonitorNotice="Đang tắt giao diện giám sát"
+FLUXIONDisablingExtraInterfacesNotice="Đang tắt các giao diện bổ sung"
+FLUXIONDisablingPacketForwardingNotice="Đang tắt ${CGry}chuyển tiếp gói tin"
+FLUXIONDisablingCleaningIPTablesNotice="Đang làm sạch ${CGry}iptables"
+FLUXIONRestoringTputNotice="Đang khôi phục ${CGry}tput"
+FLUXIONDeletingFilesNotice="Đang xóa ${CGry}các tệp tạm"
+FLUXIONRestartingNetworkManagerNotice="Đang khởi động lại ${CGry}Network-Manager"
+FLUXIONCleanupSuccessNotice="Dọn dẹp thành công!"
+FLUXIONThanksSupportersNotice="Cảm ơn bạn đã sử dụng FLUXION (Việt hoá bởi xDuyHoangg)"
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# FLUXSCRIPT END
