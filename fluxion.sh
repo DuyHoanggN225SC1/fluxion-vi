@@ -2552,7 +2552,7 @@ fluxion_unprep_attack() {
 fluxion_prep_attack() {
   local -r path="$FLUXIONPath/attacks/$FluxionAttack"
 
-  if [ ! -x "$path/attack.sh" ]; then return 1; fi
+  if [ ! -f "$path/attack.sh" ]; then return 1; fi
   if [ ! -f "$path/language/$FluxionLanguage.sh" ]; then return 2; fi
 
   # Load attack parameters if any exist.
