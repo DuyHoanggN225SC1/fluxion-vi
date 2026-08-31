@@ -13,7 +13,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 
 #banner { width: 100%; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; box-sizing: border-box; border-bottom: 3px solid #10b981; }
 .logo-fpt { display: flex; align-items: center; gap: 14px; }
-.logo-badge-fpt { background: linear-gradient(135deg, #f37021 0%, #e65800 100%); color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+.logo-img { height: 42px; width: auto; max-width: 140px; object-fit: contain; }
 .logo-sub { font-size: 13px; font-weight: bold; color: #00529c; line-height: 1.4; }
 .logo-sub small { display: block; font-size: 11px; color: #7a9bbf; font-weight: normal; }
 #banner_info { font-size: 12px; color: #10b981; font-weight: bold; text-align: right; }
@@ -43,6 +43,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 @media screen and (max-width: 640px) {
     #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
     #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    .logo-img { height: 36px !important; }
     #page_content { padding: 10px 12px !important; }
     #loginWrapper { margin: 5px 0 !important; padding: 20px 14px !important; border-radius: 6px !important; }
     .succHint { font-size: 11px !important; padding: 10px 12px !important; }
@@ -54,7 +55,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 <div id="page_container">
     <div id="banner">
         <div class="logo-fpt">
-            <span class="logo-badge-fpt">FPT</span>
+            <img src="./img/Logo-FPT.webp" alt="FPT Logo" class="logo-img">
             <div class="logo-sub">
                 AC1000F — Wi-Fi 6 AX1800 Home Gateway
                 <small>Công ty Cổ phần Viễn thông FPT (FPT Telecom)</small>

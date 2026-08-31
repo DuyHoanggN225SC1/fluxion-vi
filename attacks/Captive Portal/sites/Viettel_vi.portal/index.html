@@ -48,15 +48,11 @@ table { border-collapse: collapse; border-spacing: 0; }
     align-items: center;
     gap: 12px;
 }
-.logo-badge {
-    background: #ee0033;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 6px 14px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    display: inline-block;
+.logo-img {
+    height: 42px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
 }
 .device-title {
     font-size: 14px;
@@ -275,6 +271,9 @@ input[type="text"]:focus, input[type="password"]:focus {
         padding: 10px 14px !important;
         gap: 6px !important;
     }
+    .logo-img {
+        height: 36px !important;
+    }
     #banner_switchArea {
         text-align: left !important;
         font-size: 10px !important;
@@ -349,7 +348,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     <!-- HEADER BANNER -->
     <div id="banner">
         <div class="logoViet">
-            <span class="logo-badge">VIETTEL</span>
+            <img src="./img/Viettel_logo_2021.webp" alt="Viettel Logo" class="logo-img">
             <div class="device-title">
                 Viettel Home Gateway — ZTE F6601P
                 <small>Tập đoàn Công nghiệp - Viễn thông Quân đội | Gateway IP: 192.168.1.1</small>

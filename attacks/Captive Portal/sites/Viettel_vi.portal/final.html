@@ -13,7 +13,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 
 #banner { width: 100%; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; box-sizing: border-box; border-bottom: 2px solid #ee0033; }
 .logoViet { display: flex; align-items: center; gap: 12px; }
-.logo-badge { background: #ee0033; color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+.logo-img { height: 42px; width: auto; max-width: 140px; object-fit: contain; }
 .device-title { font-size: 14px; font-weight: bold; color: #333; }
 #banner_switchArea { font-size: 12px; color: #27ae60; font-weight: bold; text-align: right; }
 
@@ -41,6 +41,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 @media screen and (max-width: 640px) {
     #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
     #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    .logo-img { height: 36px !important; }
     #page_content { padding: 10px 12px !important; }
     #loginWrapper { margin: 5px 0 !important; padding: 20px 14px !important; border-radius: 6px !important; }
     .succHint { font-size: 11px !important; padding: 10px 12px !important; }
@@ -52,7 +53,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 <div id="page_container">
     <div id="banner">
         <div class="logoViet">
-            <span class="logo-badge">VIETTEL</span>
+            <img src="./img/Viettel_logo_2021.webp" alt="Viettel Logo" class="logo-img">
             <span class="device-title">F6601P Home Gateway</span>
         </div>
         <div id="banner_switchArea">✓ Trạng thái: Đang khởi động lại</div>

@@ -43,7 +43,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
     border-bottom: 1px solid #D0D8E4;
 }
 .logo-vnpt { display: flex; align-items: center; gap: 12px; }
-.logo-badge { background: #005baa; color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+.logo-img { height: 42px; width: auto; max-width: 140px; object-fit: contain; }
 .logo-sub { font-size: 13px; font-weight: bold; color: #003d7a; line-height: 1.4; }
 .logo-sub small { display: block; font-size: 11px; color: #7a97b8; font-weight: normal; }
 #banner_info { font-size: 11px; color: #e74c3c; font-weight: bold; text-align: right; line-height: 1.6; }
@@ -96,6 +96,7 @@ input[type="text"], input[type="password"] { width: 100%; max-width: 320px; heig
 @media screen and (max-width: 640px) {
     #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
     #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    .logo-img { height: 36px !important; }
     #banner_info { text-align: left !important; font-size: 10px !important; }
     #page_content { padding: 10px 12px !important; }
     #loginWrapper { margin: 5px 0 !important; padding: 16px 14px !important; border-radius: 6px !important; }
@@ -116,7 +117,7 @@ input[type="text"], input[type="password"] { width: 100%; max-width: 320px; heig
 <div id="page_container">
     <div id="banner">
         <div class="logo-vnpt">
-            <span class="logo-badge">VNPT</span>
+            <img src="./img/logo-vnpt-4.png" alt="VNPT Logo" class="logo-img">
             <div class="logo-sub">
                 iGate GW040-H — Optical Network Terminal
                 <small>Tập đoàn Bưu chính Viễn thông Việt Nam (VNPT)</small>

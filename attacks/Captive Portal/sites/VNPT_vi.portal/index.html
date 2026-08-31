@@ -49,15 +49,11 @@ table { border-collapse: collapse; border-spacing: 0; }
     align-items: center;
     gap: 12px;
 }
-.logo-badge {
-    background: #005baa;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 6px 14px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    display: inline-block;
+.logo-img {
+    height: 42px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
 }
 .logo-sub {
     font-size: 13px;
@@ -272,9 +268,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     box-sizing: border-box;
 }
 
-/* ========================================================= */
-/* === MOBILE RESPONSIVE MEDIA QUERIES (PHONES & TABLETS) === */
-/* ========================================================= */
+/* MOBILE RESPONSIVE MEDIA QUERIES */
 @media screen and (max-width: 640px) {
     #page_container {
         padding: 0 !important;
@@ -286,6 +280,9 @@ input[type="text"]:focus, input[type="password"]:focus {
         align-items: flex-start !important;
         padding: 10px 14px !important;
         gap: 6px !important;
+    }
+    .logo-img {
+        height: 36px !important;
     }
     #banner_info {
         text-align: left !important;
@@ -361,7 +358,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     <!-- HEADER BANNER -->
     <div id="banner">
         <div class="logo-vnpt">
-            <span class="logo-badge">VNPT</span>
+            <img src="./img/logo-vnpt-4.png" alt="VNPT Logo" class="logo-img">
             <div class="logo-sub">
                 VNPT Gateway — iGate GW040-H
                 <small>Cổng Quản Trị Thiết Bị Mạng | Gateway IP: 192.168.1.1</small>
