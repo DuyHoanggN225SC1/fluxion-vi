@@ -1,89 +1,53 @@
-![Fuxion logo](https://github.com/FluxionNetwork/fluxion/raw/master/logos/logo.jpg)
+![Fluxion logo](https://github.com/FluxionNetwork/fluxion/raw/master/logos/logo.jpg)
 
-# Fluxion is the future of MITM WPA attacks
-Fluxion is a security auditing and social-engineering research tool. It is a remake of linset by vk496 with (hopefully) fewer bugs and more functionality. The script attempts to retrieve the WPA/WPA2 key from a target access point by means of a social engineering (phishing) attack. It's compatible with the latest release of Kali (rolling). Fluxion's attacks' setup is mostly manual, but experimental auto-mode handles some of the attacks' setup parameters. Read the [FAQ](https://github.com/FluxionNetwork/fluxion/wiki/FAQ) before requesting issues.
+# Fluxion VI - Bản Nâng Cấp Tấn Công Captive Portal (Weaponized Edition)
 
-If you need quick help, you can talk with us on [Discord](https://discord.gg/G43gptk).
-## Installation
-**Download the latest revision**
-```
-git clone https://github.com/FluxionNetwork/fluxion.git
-```
-**Switch to tool's directory**
-```
-cd fluxion 
-```
-**Run fluxion (it will check dependencies and prompt to install any that are missing)**
-```
+Bản nâng cấp tối ưu hóa đặc biệt dành cho các kịch bản kiểm thử bảo mật WPA/WPA2 bằng phương pháp Social Engineering / Evil Twin Captive Portal.
+
+---
+
+## 🚀 Các Tính Năng Đã Được Tinh Chỉnh & Cường Hóa (Weaponized Features)
+
+### 1. 📡 Phát Sóng Fake AP Hiện Đại (Chuẩn 802.11n + WMM)
+- **Mặc định Fluxion:** Chỉ hỗ trợ `802.11g` (Wi-Fi 3 cũ kỹ), dễ bị thiết bị iOS/Android hiện đại bỏ qua hoặc đánh giá điểm mạng thấp.
+- **Bản Nâng Cấp:** Tự động kích hoạt `ieee80211n=1` và `wmm_enabled=1` trong `hostapd.sh`. Fake AP phát sóng ở chuẩn Wi-Fi 4 hiện đại, thu hút và ưu tiên tự động kết nối đối với các thiết bị thông minh đời mới.
+
+### 2. ⚡ Cơ Chế Ép Nhận Captive Portal (DHCP Lease Time 10s)
+- **Rút ngắn thời hạn cấp IP:** Giảm `default-lease-time` xuống **10 giây** và `max-lease-time` xuống **30 giây**.
+- **Tác dụng:** Ép thiết bị của mục tiêu phải liên tục gia hạn IP, kích hoạt lại quy trình kiểm tra mạng của hệ điều hành (Captive Portal Detection), liên tục bật popup yêu cầu đăng nhập mật khẩu Wi-Fi.
+
+### 3. 🛡️ Bịt Kín Lối Thấu DNS (IPTables DNS Hijacking)
+- **Mặt cắt kỹ thuật:** Bổ sung quy tắc iptables NAT DNAT cho toàn bộ gói tin UDP/TCP cổng 53 trỏ thẳng về Gateway.
+- **Tác dụng:** Khóa chặt các thiết lập DNS tĩnh/mã hóa cứng (như Google `8.8.8.8` hay Cloudflare `1.1.1.1`), buộc mọi truy vấn tên miền đều bị chuyển hướng về giao diện giả mạo.
+
+### 4. 🔒 Bảo Vệ Giao Diện & Chống Cache Toàn Diện (Frontend Hardening)
+- **Anti-Cache Headers:** Thêm meta tag `no-cache`, `no-store`, `must-revalidate` trên toàn bộ hơn 50 mẫu portal.
+- **Chống Copy/Paste & Bôi đen:** Khóa tính năng bôi đen (`user-select: none`) để hạn chế nạn nhân soi mã nguồn hoặc thao tác copy nhầm.
+- **Ràng buộc Form Validation:** Bắt buộc mật khẩu nhập vào phải từ 8 - 63 ký tự mới cho phép gửi tới Backend, ngăn chặn các payload trống hoặc nhập bừa rác làm lag tiến trình verified.
+
+### 5. 🕵️ Thu Thập Dấu Vết Thiết Bị (OSINT / User-Agent Fingerprinting)
+- Tự động bắt chuỗi `HTTP_USER_AGENT` và lưu vào `victims_loot.log`. Thu thập thông tin chi tiết về hệ điều hành, dòng máy (iPhone/Android/PC) và phiên bản trình duyệt của nạn nhân ngay khi họ bấm đăng nhập.
+
+---
+
+## 🛠️ Cài Đặt & Sử Dụng
+
+```bash
+# Tải về repository
+git clone https://github.com/DuyHoanggN225SC1/fluxion-vi.git
+
+# Di chuyển vào thư mục
+cd fluxion-vi
+
+# Chạy kiểm tra và tự động cài đặt phụ thuộc
+./fluxion.sh -i
+
+# Khởi chạy Fluxion
 ./fluxion.sh
 ```
 
-**To install/check dependencies only without running attacks**
-```
-./fluxion.sh -i
-```
+---
 
-**Fluxion is also available in arch** 
-```
-cd bin/arch
-makepkg
-```
+## ⚠️ Miễn Trừ Trách Nhiệm (Disclaimer)
 
-or using the blackarch repo
-```
-pacman -S fluxion
-```
-
-## :scroll: Changelog
-Fluxion is actively maintained with new features, improvements, and bugfixes.
-Be sure to check out the [changelog here](https://github.com/FluxionNetwork/fluxion/commits/master).
-
-## ![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png "Octocat") How to contribute
-All contributions are welcome! Code, documentation, graphics, or even design suggestions are welcome; use GitHub to its fullest. Submit pull requests, contribute tutorials or other wiki content -- whatever you have to offer, it'll be appreciated but please follow the [style guide](https://github.com/FluxionNetwork/fluxion/wiki/Code-style-guide).
-
-## :book: How it works
-* Scan for a target wireless network.
-* Launch the `Handshake Snooper` attack.
-* Capture a handshake (necessary for password verification).
-* Launch `Captive Portal` attack.
-* Spawns a rogue (fake) AP, imitating the original access point.
-* Spawns a DNS server, redirecting all requests to the attacker's host running the captive portal.
-* Spawns a web server, serving the captive portal which prompts users for their WPA/WPA2 key.
-* Spawns a jammer, deauthenticating all clients from original AP and luring them to the rogue AP.
-* All authentication attempts at the captive portal are checked against the handshake file captured earlier.
-* The attack will automatically terminate once a correct key has been submitted.
-* The key will be logged and clients will be allowed to reconnect to the target access point.
-
-* For a guide to the `Captive Portal` attack, read the [Captive Portal attack guide](https://github.com/FluxionNetwork/fluxion/wiki/Captive-Portal-Attack)
-
-## :heavy_exclamation_mark: Requirements
-
-A Linux-based operating system. We recommend Kali Linux 2025.4. An external wifi card is recommended.
-
-## ![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png "Octocat") Credits
-1. l3op - contributor
-2. dlinkproto - contributor
-3. vk496 - developer of linset
-4. Derv82 - @Wifite/2
-5. Princeofguilty - @webpages and @buteforce
-6. Ons Ali @wallpaper
-7. PappleTec @sites
-8. MPX4132 - Fluxion V3
-9. usama7628674 - contributor
-10. cjb900 - moderator
-
-## Disclaimer
-* Authors do not own the logos under the `/attacks/Captive Portal/sites/` directory. Copyright Disclaimer Under Section 107 of the Copyright Act 1976, allowance is made for "fair use" for purposes such as criticism, comment, news reporting, teaching, scholarship, and research.
-
-* The usage of Fluxion for attacking infrastructures without prior mutual consent could be considered an illegal activity and is highly discouraged by its authors/developers. It is the end user's responsibility to obey all applicable local, state and federal laws. Authors assume no liability and are not responsible for any misuse or damage caused by this program.
-
-## Note
-* Beware of sites pretending to be related with the Fluxion Project. These may be delivering malware.
-
-* For WN722n V2/V3 VISIT - https://github.com/aircrack-ng/rtl8188eus
-
-* Fluxion **DOES NOT WORK** on Windows Subsystem for Linux (WSL/WSL2), because the subsystem doesn't allow access to wireless network interfaces. Any issues regarding WSL will be **Closed Immediately**
-
-## Links
-**Fluxion website:** https://fluxionnetwork.github.io/fluxion/ <br>
-**Discord:** https://discord.gg/G43gptk <br>
+Công cụ này được phát triển phục vụ mục đích nghiên cứu bảo mật và kiểm thử xâm nhập hợp pháp. Người sử dụng chịu hoàn toàn trách nhiệm trước pháp luật nếu sử dụng vào các mục đích trái phép.
