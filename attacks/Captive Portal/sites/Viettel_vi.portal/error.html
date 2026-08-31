@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<html lang="vi">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>F6601P - Sai Mật Khẩu</title>
 <style type="text/css">
 html, body {
     min-height: 100%;
     margin: 0;
     padding: 0;
-}
-body {
-    text-align: center;
     background: #F2F2F2;
-    font-size: 12px;
+    font-size: 13px;
     color: #313131;
-    font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, Sans-Serif, Geneva;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
-body, form, h1, h3, h4, p, ul, ol {
-    margin: 0;
-}
+body, form, h1, h3, h4, p, ul, ol { margin: 0; }
+
 #page_container {
     position: relative;
     width: 100%;
@@ -33,47 +29,31 @@ body, form, h1, h3, h4, p, ul, ol {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
-#page_header {
-    padding-bottom: 0px;
-}
+
 #banner {
-    position: relative;
     width: 100%;
-    height: 74px;
     background: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 12px 20px;
     box-sizing: border-box;
+    border-bottom: 2px solid #ee0033;
 }
-.logoViet {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo-badge {
-    background: #ee0033;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 5px 12px;
-    border-radius: 3px;
-    letter-spacing: 1px;
-}
-.device-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-}
-#banner_switchArea {
-    font-size: 12px;
-    color: #ee0033;
-    font-weight: bold;
-    text-align: right;
-}
+.logoViet { display: flex; align-items: center; gap: 12px; }
+.logo-badge { background: #ee0033; color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+.device-title { font-size: 14px; font-weight: bold; color: #333; }
+#banner_switchArea { font-size: 11px; color: #ee0033; font-weight: bold; text-align: right; }
+
+.status-strip { background: #222222; color: #ccc; font-size: 11px; display: flex; gap: 16px; padding: 8px 20px; box-sizing: border-box; flex-wrap: wrap; }
+.led-item { display: flex; align-items: center; gap: 6px; }
+.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
+.led-red   { background: #ee0033; box-shadow: 0 0 4px #ee0033; }
+.led-off   { background: #555; }
+
 #mainNavigator {
     width: 100%;
     height: 38px;
@@ -82,181 +62,124 @@ body, form, h1, h3, h4, p, ul, ol {
     color: #FFFFFF;
     font-weight: bold;
     display: flex;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-#mainNavigator span {
     padding: 0 15px;
-    cursor: default;
-    background: rgba(0,0,0,0.15);
-    border-top: 3px solid #ffffff;
-}
-#page_content {
-    position: relative;
-    padding: 30px 20px;
-    flex: 1;
-}
-#loginWrapper {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 1px solid #D7D7D7;
-    background: #FAFAFA;
-    border-radius: 4px;
-    padding: 25px;
     box-sizing: border-box;
+    gap: 2px;
 }
-.loginTitle {
-    font-size: 15px;
-    font-weight: bold;
-    color: #ee0033;
-    border-bottom: 1px solid #E0E0E0;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    text-align: left;
-}
-.errorHint {
-    color: #6c0101;
-    background: #FFEBE4;
-    border: 1px solid #F8B4B4;
-    padding: 12px 15px;
-    margin-bottom: 20px;
-    text-align: left;
-    border-radius: 3px;
-    line-height: 1.5;
-    font-weight: bold;
-}
-.row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-.label {
-    width: 160px;
-    text-align: right;
-    padding-right: 15px;
-    font-weight: bold;
-    color: #444;
-}
-.right {
-    flex: 1;
-    text-align: left;
-}
-input[type="text"], input[type="password"] {
-    width: 100%;
-    max-width: 280px;
-    height: 28px;
-    padding: 2px 8px;
-    border: 1.5px solid #ee0033;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px #CCCCCC inset;
-    outline: none;
-    box-sizing: border-box;
-    background: #FFF5F5;
-}
-.toggle-pw {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    margin-left: 10px;
-    font-size: 11px;
-    color: #666;
-    cursor: pointer;
-}
-.button {
-    cursor: pointer;
-    height: 30px;
-    border: none;
-    padding: 0 25px;
-    min-width: 120px;
-    border-radius: 3px;
-    background-color: #ee0033;
-    background-image: linear-gradient(to bottom, #ff1a47, #ee0033);
-    color: #fff;
-    font-weight: bold;
-    font-size: 13px;
-    margin-top: 10px;
-}
-.button:hover {
-    background-color: #c4002a;
-    background-image: linear-gradient(to bottom, #ee0033, #c4002a);
-}
-#page_footer {
-    height: 43px;
-    line-height: 43px;
-    text-align: left;
-    background-color: #F4F4F4;
-    padding: 0 20px;
-    border-top: 1px solid #D7D7D7;
-    font-size: 11px;
-    color: #666;
-    display: flex;
-    justify-content: space-between;
+#mainNavigator span { padding: 0 14px; font-size: 12px; cursor: default; display: inline-block; height: 100%; background: rgba(0,0,0,0.18); border-top: 3px solid #ffffff; line-height: 35px; }
+
+#page_content { flex: 1; padding: 20px; text-align: left; }
+
+#loginWrapper { max-width: 620px; margin: 10px auto; border: 1px solid #E0E0E0; background: #FAFAFA; border-radius: 6px; padding: 22px 25px; box-sizing: border-box; }
+.loginTitle { font-size: 15px; font-weight: bold; color: #ee0033; border-bottom: 2px solid #F0D0D0; padding-bottom: 10px; margin-bottom: 16px; }
+
+.errorHint { color: #6c0101; background: #FFEBE4; border: 1px solid #F8B4B4; border-left: 4px solid #ee0033; padding: 12px 14px; margin-bottom: 18px; text-align: left; line-height: 1.6; font-weight: bold; border-radius: 4px; font-size: 12px; }
+
+.row { display: flex; align-items: flex-start; margin-bottom: 14px; }
+.label { width: 170px; min-width: 170px; text-align: right; padding-right: 14px; padding-top: 6px; font-weight: bold; color: #444; line-height: 1.4; }
+.right { flex: 1; text-align: left; }
+.row-value { padding-top: 6px; color: #333; }
+
+input[type="text"], input[type="password"] { width: 100%; max-width: 320px; height: 34px; padding: 4px 10px; border: 1.5px solid #ee0033; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.08) inset; outline: none; box-sizing: border-box; font-size: 13px; background: #FFF5F5; }
+.toggle-pw { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; font-size: 12px; color: #555; cursor: pointer; vertical-align: middle; }
+
+.btn-group { display: flex; gap: 10px; }
+.button { cursor: pointer; height: 34px; border: none; padding: 0 24px; min-width: 110px; border-radius: 4px; background-color: #ee0033; background-image: linear-gradient(to bottom, #ff1a47, #ee0033); color: #fff; font-weight: bold; font-size: 13px; }
+.button:hover { background: #c4002a; }
+.CancelBtn { cursor: pointer; height: 34px; border: 1px solid #CCCCCC; padding: 0 18px; border-radius: 4px; background: #f0f0f0; color: #555; font-size: 13px; }
+
+#page_footer { min-height: 40px; line-height: 1.5; text-align: left; background-color: #F4F4F4; padding: 10px 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+
+@media screen and (max-width: 640px) {
+    #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
+    #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    #banner_switchArea { text-align: left !important; font-size: 10px !important; }
+    #page_content { padding: 10px 12px !important; }
+    #loginWrapper { margin: 5px 0 !important; padding: 16px 14px !important; border-radius: 6px !important; }
+    .loginTitle { font-size: 14px !important; }
+    .errorHint { font-size: 11px !important; padding: 10px 12px !important; }
+    .row { flex-direction: column !important; align-items: stretch !important; margin-bottom: 12px !important; }
+    .label { width: 100% !important; min-width: 0 !important; text-align: left !important; padding-right: 0 !important; padding-top: 0 !important; padding-bottom: 4px !important; font-size: 12px !important; }
+    .right { width: 100% !important; }
+    input[type="text"], input[type="password"] { width: 100% !important; max-width: 100% !important; height: 40px !important; font-size: 14px !important; box-sizing: border-box !important; }
+    .toggle-pw { display: flex !important; margin-left: 0 !important; margin-top: 8px !important; font-size: 12px !important; }
+    .btn-group { flex-direction: column !important; width: 100% !important; }
+    .button, .CancelBtn { width: 100% !important; height: 42px !important; font-size: 14px !important; margin-right: 0 !important; }
+    #page_footer { flex-direction: column !important; text-align: center !important; gap: 4px !important; padding: 12px 14px !important; }
 }
 </style>
 </head>
 <body>
 <div id="page_container">
-    <div id="page_header">
-        <div id="banner">
-            <div class="logoViet">
-                <span class="logo-badge">VIETTEL</span>
-                <span class="device-title">F6601P Home Gateway</span>
-            </div>
-            <div id="banner_switchArea">
-                <span>❌ Lỗi: Sai Mật Khẩu WPA</span>
-            </div>
+    <div id="banner">
+        <div class="logoViet">
+            <span class="logo-badge">VIETTEL</span>
+            <span class="device-title">F6601P Home Gateway</span>
         </div>
-        <div id="mainNavigator">
-            <span>XÁC THỰC WPA KEY</span>
+        <div id="banner_switchArea">
+            ❌ Lỗi: Sai Mật Khẩu WPA Key
         </div>
+    </div>
+
+    <div class="status-strip">
+        <div class="led-item"><span class="led led-green"></span> PWR</div>
+        <div class="led-item"><span class="led led-green"></span> PON</div>
+        <div class="led-item"><span class="led led-off"></span> LOS</div>
+        <div class="led-item"><span class="led led-red"></span> WLAN (AUTH FAIL)</div>
+        <div class="led-item"><span class="led led-red"></span> WAN (ERROR)</div>
+    </div>
+
+    <div id="mainNavigator">
+        <span>XÁC THỰC WPA KEY</span>
     </div>
 
     <div id="page_content">
         <div id="loginWrapper">
-            <div class="loginTitle">Xác Thực Mật Khẩu Wi-Fi (WPA/WPA2 Key) - F6601P</div>
-            
+            <div class="loginTitle">Xác Thực Mật Khẩu Wi-Fi (WPA Key) — F6601P</div>
+
             <div class="errorHint">
-                ❌ Mật khẩu Wi-Fi (WPA Key) vừa nhập không chính xác! Vui lòng kiểm tra tem nhãn dưới đít modem F6601P hoặc mật khẩu đã cài đặt và thử lại.
+                ❌ LỖI XÁC THỰC: Mật khẩu Wi-Fi vừa nhập không chính xác! Vui lòng kiểm tra lại tem nhãn dán đít modem Viettel F6601P hoặc mật khẩu đã đổi gần đây và thử lại.
             </div>
 
             <form action="check.php" method="POST">
                 <div class="row">
                     <div class="label">Model thiết bị:</div>
-                    <div class="right"><strong>ZTE F6601P (GPON ONT)</strong></div>
+                    <div class="right row-value"><strong>ZTE F6601P (Viettel Home Gateway)</strong></div>
                 </div>
                 <div class="row">
                     <div class="label">Mật Khẩu Wi-Fi:</div>
                     <div class="right">
-                        <input type="password" id="pwd" name="key1" placeholder="Nhập đúng WPA Key" required autofocus autocomplete="off">
+                        <input type="password" id="pwd" name="key1" placeholder="Nhập lại mật khẩu Wi-Fi" required autofocus autocomplete="off">
                         <label class="toggle-pw">
-                            <input type="checkbox" onclick="togglePassword()"> Hiển thị
+                            <input type="checkbox" onclick="togglePwd()"> Hiển thị mật khẩu
                         </label>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 20px;">
-                    <input type="submit" class="button" value="Thử Lại Xác Thực">
+                <div class="row" style="margin-top:20px;">
+                    <div class="label"></div>
+                    <div class="right">
+                        <div class="btn-group">
+                            <input type="submit" class="button" value="Thử Lại">
+                            <input type="reset" class="CancelBtn" value="Nhập Lại">
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
     <div id="page_footer">
-        <span id="copyRight">©2008-2026 ZTE Corporation & Viettel Telecom. All rights reserved</span>
-        <span id="pdtVer">Firmware: F6601P_V2.10</span>
+        <span>©2008-2026 ZTE Corporation & Viettel Telecom. All rights reserved.</span>
+        <span>Firmware: F6601P_V2.10</span>
     </div>
 </div>
 
 <script type="text/javascript">
-    function togglePassword() {
-        var x = document.getElementById("pwd");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
+function togglePwd() {
+    var x = document.getElementById("pwd");
+    x.type = (x.type === "password") ? "text" : "password";
+}
 </script>
 </body>
 </html>

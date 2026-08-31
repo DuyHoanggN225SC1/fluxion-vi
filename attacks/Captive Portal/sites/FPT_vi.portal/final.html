@@ -1,45 +1,53 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>FPT AC1000F — Cấu Hình Thành Công</title>
 <style type="text/css">
-html, body { min-height: 100%; margin: 0; padding: 0; }
-body { text-align: center; background: #EDEFF2; font-size: 12px; color: #313131; font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, sans-serif; }
+html, body { min-height: 100%; margin: 0; padding: 0; background: #EDEFF2; font-size: 13px; color: #313131; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 
-#page_container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 0 15px 0; text-align: left; background: #FFFFFF; box-shadow: 0 0 8px rgba(0,0,0,0.12); min-height: 100vh; display: flex; flex-direction: column; box-sizing: border-box; }
+#page_container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 0 15px 0; text-align: left; background: #FFFFFF; box-shadow: 0 0 10px rgba(0,0,0,0.1); min-height: 100vh; display: flex; flex-direction: column; box-sizing: border-box; }
 
-#banner { width: 100%; height: 72px; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; border-bottom: 3px solid #10b981; }
+#banner { width: 100%; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; box-sizing: border-box; border-bottom: 3px solid #10b981; }
 .logo-fpt { display: flex; align-items: center; gap: 14px; }
-.logo-badge-fpt { background: linear-gradient(135deg, #f37021 0%, #e65800 100%); color: #fff; font-weight: bold; font-size: 18px; padding: 5px 14px; border-radius: 3px; letter-spacing: 2px; }
+.logo-badge-fpt { background: linear-gradient(135deg, #f37021 0%, #e65800 100%); color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
 .logo-sub { font-size: 13px; font-weight: bold; color: #00529c; line-height: 1.4; }
 .logo-sub small { display: block; font-size: 11px; color: #7a9bbf; font-weight: normal; }
 #banner_info { font-size: 12px; color: #10b981; font-weight: bold; text-align: right; }
 
-.status-strip { background: #0b1e36; color: #aab8c8; font-size: 11px; display: flex; gap: 18px; padding: 6px 20px; box-sizing: border-box; flex-wrap: wrap; }
-.led-item { display: flex; align-items: center; gap: 5px; }
+.status-strip { background: #0b1e36; color: #aab8c8; font-size: 11px; display: flex; gap: 16px; padding: 8px 20px; box-sizing: border-box; flex-wrap: wrap; }
+.led-item { display: flex; align-items: center; gap: 6px; }
 .led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 .led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
 .led-off   { background: #444; }
 
-#mainNavigator { width: 100%; height: 36px; line-height: 36px; background: #10b981; display: flex; padding: 0 20px; box-sizing: border-box; gap: 2px; }
+#mainNavigator { width: 100%; height: 38px; line-height: 38px; background: #10b981; display: flex; padding: 0 15px; box-sizing: border-box; gap: 2px; }
 #mainNavigator span { padding: 0 14px; color: #c8f5e2; font-size: 12px; font-weight: bold; cursor: default; display: inline-block; height: 100%; }
-#mainNavigator span.active { background: #ffffff; color: #0d9e6e; border-top: 3px solid #f37021; line-height: 33px; }
+#mainNavigator span.active { background: #ffffff; color: #0d9e6e; border-top: 3px solid #f37021; line-height: 35px; }
 
-#page_content { flex: 1; padding: 25px 20px; text-align: left; }
+#page_content { flex: 1; padding: 20px; text-align: left; }
 
-#loginWrapper { max-width: 580px; margin: 10px auto; border: 1px solid #BCE5C8; background: #F5FBF7; border-radius: 3px; padding: 30px; box-sizing: border-box; text-align: center; }
+#loginWrapper { max-width: 580px; margin: 10px auto; border: 1px solid #BCE5C8; background: #F5FBF7; border-radius: 6px; padding: 25px; box-sizing: border-box; text-align: center; }
 
-.succHint { color: #385401; background: #E7FFE4; border: 1px solid #BCE5B6; border-left: 4px solid #10b981; padding: 13px 15px; margin-bottom: 20px; text-align: left; line-height: 1.6; }
+.succHint { color: #385401; background: #E7FFE4; border: 1px solid #BCE5B6; border-left: 4px solid #10b981; padding: 13px 15px; margin-bottom: 20px; text-align: left; line-height: 1.6; border-radius: 4px; font-size: 12px; }
 
 .progress-box { background: #E0E0E0; border-radius: 10px; height: 14px; overflow: hidden; margin: 18px 0 8px; border: 1px solid #C8D9C8; }
-.progress-bar { background: linear-gradient(to right, #f37021, #10b981); height: 100%; width: 0%; }
-#status-text { font-size: 11px; color: #666; font-weight: bold; }
+.progress-bar { background: linear-gradient(to right, #f37021, #10b981); height: 100%; width: 0%; transition: width 0.2s ease; }
+#status-text { font-size: 12px; color: #555; font-weight: bold; }
 
-#page_footer { height: 40px; line-height: 40px; text-align: left; background-color: #F4F4F4; padding: 0 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; box-sizing: border-box; }
+#page_footer { min-height: 40px; line-height: 1.5; text-align: left; background-color: #F4F4F4; padding: 10px 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+
+@media screen and (max-width: 640px) {
+    #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
+    #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    #page_content { padding: 10px 12px !important; }
+    #loginWrapper { margin: 5px 0 !important; padding: 20px 14px !important; border-radius: 6px !important; }
+    .succHint { font-size: 11px !important; padding: 10px 12px !important; }
+    #page_footer { flex-direction: column !important; text-align: center !important; gap: 4px !important; padding: 12px 14px !important; }
+}
 </style>
 </head>
 <body>
@@ -58,7 +66,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
     <div class="status-strip">
         <div class="led-item"><span class="led led-green"></span> POWER</div>
         <div class="led-item"><span class="led led-green"></span> OPTICAL (PON)</div>
-        <div class="led-item"><span class="led led-off"></span>   LOS</div>
+        <div class="led-item"><span class="led led-off"></span> LOS</div>
         <div class="led-item"><span class="led led-green"></span> WLAN (ONLINE)</div>
         <div class="led-item"><span class="led led-green"></span> WAN (RECONNECTING)</div>
     </div>
@@ -84,7 +92,7 @@ body, form, h1, h3, h4, p, ul, ol { margin: 0; }
     </div>
 
     <div id="page_footer">
-        <span>©2026 FPT Telecom. Mọi dịch vụ trên một kết nối. | Tổng đài hỗ trợ 24/7: <strong>1900 6600</strong></span>
+        <span>©2026 FPT Telecom. Mọi dịch vụ trên một kết nối. | Hotline: <strong>1900 6600</strong></span>
         <span>AC1000F Wi-Fi 6 — FW V1.4.2</span>
     </div>
 </div>

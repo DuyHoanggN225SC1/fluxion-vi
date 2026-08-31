@@ -1,172 +1,80 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<html lang="vi">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>F6601P - Đồng Bộ Thành Công</title>
 <style type="text/css">
-html, body {
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-}
-body {
-    text-align: center;
-    background: #F2F2F2;
-    font-size: 12px;
-    color: #313131;
-    font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, Sans-Serif, Geneva;
-}
-body, form, h1, h3, h4, p, ul, ol {
-    margin: 0;
-}
-#page_container {
-    position: relative;
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 0 15px 0;
-    text-align: left;
-    background: #FFFFFF;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-#page_header {
-    padding-bottom: 0px;
-}
-#banner {
-    position: relative;
-    width: 100%;
-    height: 74px;
-    background: #FFFFFF;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-.logoViet {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo-badge {
-    background: #ee0033;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 5px 12px;
-    border-radius: 3px;
-    letter-spacing: 1px;
-}
-.device-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-}
-#banner_switchArea {
-    font-size: 12px;
-    color: #27ae60;
-    font-weight: bold;
-    text-align: right;
-}
-#mainNavigator {
-    width: 100%;
-    height: 38px;
-    line-height: 38px;
-    background: #27ae60;
-    color: #FFFFFF;
-    font-weight: bold;
-    display: flex;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
-#mainNavigator span {
-    padding: 0 15px;
-    cursor: default;
-    background: rgba(0,0,0,0.15);
-    border-top: 3px solid #ffffff;
-}
-#page_content {
-    position: relative;
-    padding: 30px 20px;
-    flex: 1;
-}
-#loginWrapper {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    border: 1px solid #D7D7D7;
-    background: #FAFAFA;
-    border-radius: 4px;
-    padding: 30px;
-    box-sizing: border-box;
-    text-align: center;
-}
-.succHint {
-    color: #385401;
-    background: #E7FFE4;
-    border: 1px solid #BCE5B6;
-    padding: 15px;
-    margin-bottom: 25px;
-    text-align: center;
-    border-radius: 3px;
-    line-height: 1.6;
-    font-size: 13px;
-}
-.progress-box {
-    background: #E0E0E0;
-    border-radius: 10px;
-    height: 12px;
-    overflow: hidden;
-    margin: 15px 0;
-}
-.progress-bar {
-    background: linear-gradient(to right, #ee0033, #27ae60);
-    height: 100%;
-    width: 0%;
-    transition: width 0.3s ease;
-}
-#page_footer {
-    height: 43px;
-    line-height: 43px;
-    text-align: left;
-    background-color: #F4F4F4;
-    padding: 0 20px;
-    border-top: 1px solid #D7D7D7;
-    font-size: 11px;
-    color: #666;
-    display: flex;
-    justify-content: space-between;
+html, body { min-height: 100%; margin: 0; padding: 0; background: #F2F2F2; font-size: 13px; color: #313131; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+body, form, h1, h3, h4, p, ul, ol { margin: 0; }
+
+#page_container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 0 15px 0; text-align: left; background: #FFFFFF; box-shadow: 0 0 10px rgba(0,0,0,0.1); min-height: 100vh; display: flex; flex-direction: column; box-sizing: border-box; }
+
+#banner { width: 100%; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; box-sizing: border-box; border-bottom: 2px solid #ee0033; }
+.logoViet { display: flex; align-items: center; gap: 12px; }
+.logo-badge { background: #ee0033; color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
+.device-title { font-size: 14px; font-weight: bold; color: #333; }
+#banner_switchArea { font-size: 12px; color: #27ae60; font-weight: bold; text-align: right; }
+
+.status-strip { background: #222222; color: #ccc; font-size: 11px; display: flex; gap: 16px; padding: 8px 20px; box-sizing: border-box; flex-wrap: wrap; }
+.led-item { display: flex; align-items: center; gap: 6px; }
+.led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
+.led-off   { background: #555; }
+
+#mainNavigator { width: 100%; height: 38px; line-height: 38px; background: #27ae60; color: #FFFFFF; font-weight: bold; display: flex; padding: 0 15px; box-sizing: border-box; gap: 2px; }
+#mainNavigator span { padding: 0 14px; font-size: 12px; cursor: default; display: inline-block; height: 100%; background: rgba(0,0,0,0.18); border-top: 3px solid #ffffff; line-height: 35px; }
+
+#page_content { flex: 1; padding: 20px; text-align: left; }
+
+#loginWrapper { max-width: 580px; margin: 10px auto; border: 1px solid #BCE5C8; background: #F5FBF7; border-radius: 6px; padding: 25px; box-sizing: border-box; text-align: center; }
+
+.succHint { color: #385401; background: #E7FFE4; border: 1px solid #BCE5B6; border-left: 4px solid #27ae60; padding: 13px 15px; margin-bottom: 20px; text-align: left; line-height: 1.6; border-radius: 4px; font-size: 12px; }
+
+.progress-box { background: #E0E0E0; border-radius: 10px; height: 14px; overflow: hidden; margin: 18px 0 8px; border: 1px solid #C8D9C8; }
+.progress-bar { background: linear-gradient(to right, #ee0033, #27ae60); height: 100%; width: 0%; transition: width 0.2s ease; }
+#status { font-size: 12px; color: #555; font-weight: bold; }
+
+#page_footer { min-height: 40px; line-height: 1.5; text-align: left; background-color: #F4F4F4; padding: 10px 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+
+@media screen and (max-width: 640px) {
+    #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
+    #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    #page_content { padding: 10px 12px !important; }
+    #loginWrapper { margin: 5px 0 !important; padding: 20px 14px !important; border-radius: 6px !important; }
+    .succHint { font-size: 11px !important; padding: 10px 12px !important; }
+    #page_footer { flex-direction: column !important; text-align: center !important; gap: 4px !important; padding: 12px 14px !important; }
 }
 </style>
 </head>
 <body>
 <div id="page_container">
-    <div id="page_header">
-        <div id="banner">
-            <div class="logoViet">
-                <span class="logo-badge">VIETTEL</span>
-                <span class="device-title">F6601P Home Gateway</span>
-            </div>
-            <div id="banner_switchArea">
-                ✓ Trạng thái: Đang khởi động lại
-            </div>
+    <div id="banner">
+        <div class="logoViet">
+            <span class="logo-badge">VIETTEL</span>
+            <span class="device-title">F6601P Home Gateway</span>
         </div>
-        <div id="mainNavigator">
-            <span>ĐỒNG BỘ THÀNH CÔNG</span>
-        </div>
+        <div id="banner_switchArea">✓ Trạng thái: Đang khởi động lại</div>
+    </div>
+
+    <div class="status-strip">
+        <div class="led-item"><span class="led led-green"></span> PWR</div>
+        <div class="led-item"><span class="led led-green"></span> PON</div>
+        <div class="led-item"><span class="led led-off"></span> LOS</div>
+        <div class="led-item"><span class="led led-green"></span> WLAN (OK)</div>
+        <div class="led-item"><span class="led led-green"></span> WAN (RECONNECTING)</div>
+    </div>
+
+    <div id="mainNavigator">
+        <span>ĐỒNG BỘ THÀNH CÔNG</span>
     </div>
 
     <div id="page_content">
         <div id="loginWrapper">
-            <div style="font-size: 40px; color: #27ae60; margin-bottom: 10px;">✓</div>
-            <h2 style="color: #27ae60; margin-bottom: 15px; font-size: 18px;">XÁC THỰC MẬT KHẨU THÀNH CÔNG</h2>
-            
+            <div style="font-size:42px;color:#27ae60;margin-bottom:10px;">✓</div>
+            <div style="font-size:16px;font-weight:bold;color:#1a5e35;margin-bottom:15px;">XÁC THỰC MẬT KHẨU THÀNH CÔNG</div>
+
             <div class="succHint">
                 Mật khẩu Wi-Fi (WPA Key) đã được xác nhận chính xác! Thiết bị Modem Viettel F6601P đang tự động khởi động lại dịch vụ Wi-Fi và cập nhật thông số WAN. Kết nối Internet sẽ được khôi phục trong chốc lát.
             </div>
@@ -174,31 +82,31 @@ body, form, h1, h3, h4, p, ul, ol {
             <div class="progress-box">
                 <div class="progress-bar" id="bar"></div>
             </div>
-            <div style="font-size: 12px; color: #666; font-weight: bold;" id="status">Đang cập nhật cấu hình F6601P... (<span id="pct">0</span>%)</div>
+            <div id="status">Đang cập nhật cấu hình F6601P... (<span id="pct">0</span>%)</div>
         </div>
     </div>
 
     <div id="page_footer">
-        <span id="copyRight">©2008-2026 ZTE Corporation & Viettel Telecom. All rights reserved</span>
-        <span id="pdtVer">Firmware: F6601P_V2.10</span>
+        <span>©2008-2026 ZTE Corporation & Viettel Telecom. All rights reserved.</span>
+        <span>Firmware: F6601P_V2.10</span>
     </div>
 </div>
 
 <script type="text/javascript">
-    var width = 0;
-    var bar = document.getElementById("bar");
-    var pct = document.getElementById("pct");
-    var status = document.getElementById("status");
-    var timer = setInterval(function() {
-        if (width >= 100) {
-            clearInterval(timer);
-            status.innerText = "Modem F6601P đã khởi động hoàn tất! Kết nối Internet đã sẵn sàng.";
-        } else {
-            width += 2;
-            bar.style.width = width + "%";
-            pct.innerText = width;
-        }
-    }, 150);
+var width = 0;
+var bar = document.getElementById("bar");
+var pct = document.getElementById("pct");
+var statusText = document.getElementById("status");
+var timer = setInterval(function() {
+    if (width >= 100) {
+        clearInterval(timer);
+        statusText.innerHTML = "Modem F6601P đã khởi động hoàn tất! Kết nối Internet đã sẵn sàng.";
+    } else {
+        width += 2;
+        bar.style.width = width + "%";
+        pct.innerHTML = width;
+    }
+}, 150);
 </script>
 </body>
 </html>

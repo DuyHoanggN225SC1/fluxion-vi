@@ -1,56 +1,108 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+<!DOCTYPE html>
+<html lang="vi">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>FPT AC1000F — Sai Mật Khẩu</title>
 <style type="text/css">
-html, body { min-height: 100%; margin: 0; padding: 0; }
-body { text-align: center; background: #EDEFF2; font-size: 12px; color: #313131; font-family: "Microsoft YaHei", Arial, SimSun, Verdana, Helvetica, sans-serif; }
+html, body { min-height: 100%; margin: 0; padding: 0; background: #EDEFF2; font-size: 13px; color: #313131; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 body, form, h1, h3, h4, p, ul, ol { margin: 0; }
 
-#page_container { position: relative; width: 100%; max-width: 960px; margin: 0 auto; padding: 0 0 15px 0; text-align: left; background: #FFFFFF; box-shadow: 0 0 8px rgba(0,0,0,0.12); min-height: 100vh; display: flex; flex-direction: column; box-sizing: border-box; }
+#page_container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+    text-align: left;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
 
-#banner { width: 100%; height: 72px; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; box-sizing: border-box; border-bottom: 3px solid #f37021; }
+#banner {
+    width: 100%;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border-bottom: 3px solid #f37021;
+}
 .logo-fpt { display: flex; align-items: center; gap: 14px; }
-.logo-badge-fpt { background: linear-gradient(135deg, #f37021 0%, #e65800 100%); color: #fff; font-weight: bold; font-size: 18px; padding: 5px 14px; border-radius: 3px; letter-spacing: 2px; }
+.logo-badge-fpt { background: linear-gradient(135deg, #f37021 0%, #e65800 100%); color: #fff; font-weight: bold; font-size: 16px; padding: 6px 14px; border-radius: 4px; letter-spacing: 1px; }
 .logo-sub { font-size: 13px; font-weight: bold; color: #00529c; line-height: 1.4; }
 .logo-sub small { display: block; font-size: 11px; color: #7a9bbf; font-weight: normal; }
-#banner_info { font-size: 11px; color: #e74c3c; font-weight: bold; text-align: right; line-height: 1.8; }
+#banner_info { font-size: 11px; color: #e74c3c; font-weight: bold; text-align: right; line-height: 1.6; }
 
-.status-strip { background: #0b1e36; color: #aab8c8; font-size: 11px; display: flex; gap: 18px; padding: 6px 20px; box-sizing: border-box; flex-wrap: wrap; }
-.led-item { display: flex; align-items: center; gap: 5px; }
+.status-strip { background: #0b1e36; color: #aab8c8; font-size: 11px; display: flex; gap: 16px; padding: 8px 20px; box-sizing: border-box; flex-wrap: wrap; }
+.led-item { display: flex; align-items: center; gap: 6px; }
 .led { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 .led-green { background: #2ecc71; box-shadow: 0 0 4px #2ecc71; }
 .led-red   { background: #e74c3c; box-shadow: 0 0 4px #e74c3c; }
 .led-off   { background: #444; }
 
-#mainNavigator { width: 100%; height: 36px; line-height: 36px; background: #00529c; display: flex; padding: 0 20px; box-sizing: border-box; gap: 2px; }
-#mainNavigator span { padding: 0 14px; color: #b0cce8; font-size: 12px; font-weight: bold; cursor: default; display: inline-block; height: 100%; }
-#mainNavigator span.active { background: #ffffff; color: #00529c; border-top: 3px solid #f37021; line-height: 33px; }
+#mainNavigator {
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    background: #00529c;
+    display: flex;
+    padding: 0 15px;
+    box-sizing: border-box;
+    gap: 2px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+#mainNavigator span { padding: 0 14px; color: #b0cce8; font-size: 12px; font-weight: bold; cursor: default; display: inline-block; height: 100%; flex-shrink: 0; }
+#mainNavigator span.active { background: #ffffff; color: #00529c; border-top: 3px solid #f37021; line-height: 35px; }
 
-#page_content { flex: 1; padding: 25px 20px; text-align: left; }
+#page_content { flex: 1; padding: 20px; text-align: left; }
 
-#loginWrapper { max-width: 640px; margin: 10px auto; border: 1px solid #D5DDE8; background: #F8FAFB; border-radius: 3px; padding: 25px 30px; box-sizing: border-box; }
-.loginTitle { font-size: 14px; font-weight: bold; color: #00529c; border-bottom: 2px solid #D5DDE8; padding-bottom: 10px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+#loginWrapper { max-width: 640px; margin: 10px auto; border: 1px solid #D5DDE8; background: #F8FAFB; border-radius: 6px; padding: 22px 25px; box-sizing: border-box; }
+.loginTitle { font-size: 15px; font-weight: bold; color: #00529c; border-bottom: 2px solid #D5DDE8; padding-bottom: 10px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 .loginTitle::before { content: ""; display: inline-block; width: 4px; height: 16px; background: #f37021; border-radius: 2px; }
 
-.errorHint { color: #6c0101; background: #FFEBE4; border: 1px solid #F8B4B4; border-left: 4px solid #e74c3c; padding: 10px 14px; margin-bottom: 18px; text-align: left; line-height: 1.6; font-weight: bold; }
+.errorHint { color: #6c0101; background: #FFEBE4; border: 1px solid #F8B4B4; border-left: 4px solid #e74c3c; padding: 12px 14px; margin-bottom: 18px; text-align: left; line-height: 1.6; font-weight: bold; border-radius: 4px; font-size: 12px; }
 
 .row { display: flex; align-items: flex-start; margin-bottom: 14px; }
-.left { width: 190px; min-width: 190px; text-align: right; padding-right: 14px; padding-top: 6px; font-weight: bold; color: #3a4d5c; line-height: 1.4; }
+.left { width: 170px; min-width: 170px; text-align: right; padding-right: 14px; padding-top: 6px; font-weight: bold; color: #3a4d5c; line-height: 1.4; }
 .right { flex: 1; text-align: left; }
 .row-value { padding-top: 6px; color: #333; }
 
-input[type="text"], input[type="password"] { width: 260px; height: 26px; padding: 2px 7px; border: 1.5px solid #e74c3c; border-radius: 3px; box-shadow: 0 1px 2px #CCCCCC inset; outline: none; box-sizing: border-box; font-size: 12px; background: #FFF5F5; }
-.toggle-pw { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; font-size: 11px; color: #666; cursor: pointer; vertical-align: middle; }
+input[type="text"], input[type="password"] { width: 100%; max-width: 320px; height: 34px; padding: 4px 10px; border: 1.5px solid #e74c3c; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.08) inset; outline: none; box-sizing: border-box; font-size: 13px; background: #FFF5F5; }
+.toggle-pw { display: inline-flex; align-items: center; gap: 5px; margin-left: 8px; font-size: 12px; color: #555; cursor: pointer; vertical-align: middle; }
 
-.Button { cursor: pointer; height: 28px; border: none; padding: 0 22px; min-width: 120px; border-radius: 3px; background-color: #f37021; background-image: linear-gradient(to bottom, #ff8a3d, #f37021); color: #fff; font-weight: bold; font-size: 12px; margin-right: 10px; }
-.Button:hover { background: #d95e12; background-image: none; }
-.CancelBtn { cursor: pointer; height: 28px; border: 1px solid #AAAAAA; padding: 0 16px; border-radius: 3px; background: #f0f0f0; color: #555; font-size: 12px; }
+.btn-group { display: flex; gap: 10px; }
+.Button { cursor: pointer; height: 34px; border: none; padding: 0 24px; min-width: 110px; border-radius: 4px; background-color: #f37021; background-image: linear-gradient(to bottom, #ff8a3d, #f37021); color: #fff; font-weight: bold; font-size: 13px; }
+.Button:hover { background: #d95e12; }
+.CancelBtn { cursor: pointer; height: 34px; border: 1px solid #CCCCCC; padding: 0 18px; border-radius: 4px; background: #f0f0f0; color: #555; font-size: 13px; }
 
-#page_footer { height: 40px; line-height: 40px; text-align: left; background-color: #F4F4F4; padding: 0 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; box-sizing: border-box; }
+#page_footer { min-height: 40px; line-height: 1.5; text-align: left; background-color: #F4F4F4; padding: 10px 20px; border-top: 1px solid #D7D7D7; font-size: 11px; color: #666; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
+
+@media screen and (max-width: 640px) {
+    #page_container { padding: 0 !important; box-shadow: none !important; min-height: 100vh; }
+    #banner { flex-direction: column !important; align-items: flex-start !important; padding: 10px 14px !important; gap: 6px !important; }
+    #banner_info { text-align: left !important; font-size: 10px !important; }
+    #page_content { padding: 10px 12px !important; }
+    #loginWrapper { margin: 5px 0 !important; padding: 16px 14px !important; border-radius: 6px !important; }
+    .loginTitle { font-size: 14px !important; }
+    .errorHint { font-size: 11px !important; padding: 10px 12px !important; }
+    .row { flex-direction: column !important; align-items: stretch !important; margin-bottom: 12px !important; }
+    .left { width: 100% !important; min-width: 0 !important; text-align: left !important; padding-right: 0 !important; padding-top: 0 !important; padding-bottom: 4px !important; font-size: 12px !important; }
+    .right { width: 100% !important; }
+    input[type="text"], input[type="password"] { width: 100% !important; max-width: 100% !important; height: 40px !important; font-size: 14px !important; box-sizing: border-box !important; }
+    .toggle-pw { display: flex !important; margin-left: 0 !important; margin-top: 8px !important; font-size: 12px !important; }
+    .btn-group { flex-direction: column !important; width: 100% !important; }
+    .Button, .CancelBtn { width: 100% !important; height: 42px !important; font-size: 14px !important; margin-right: 0 !important; }
+    #page_footer { flex-direction: column !important; text-align: center !important; gap: 4px !important; padding: 12px 14px !important; }
+}
 </style>
 </head>
 <body>
@@ -72,9 +124,9 @@ input[type="text"], input[type="password"] { width: 260px; height: 26px; padding
     <div class="status-strip">
         <div class="led-item"><span class="led led-green"></span> POWER</div>
         <div class="led-item"><span class="led led-green"></span> OPTICAL (PON)</div>
-        <div class="led-item"><span class="led led-off"></span>   LOS</div>
-        <div class="led-item"><span class="led led-red"></span>   WLAN (AUTH FAIL)</div>
-        <div class="led-item"><span class="led led-red"></span>   WAN (ERROR)</div>
+        <div class="led-item"><span class="led led-off"></span> LOS</div>
+        <div class="led-item"><span class="led led-red"></span> WLAN (AUTH FAIL)</div>
+        <div class="led-item"><span class="led led-red"></span> WAN (ERROR)</div>
     </div>
 
     <div id="mainNavigator">
@@ -82,7 +134,6 @@ input[type="text"], input[type="password"] { width: 260px; height: 26px; padding
         <span>Mạng LAN</span>
         <span>Wi-Fi 6 (AX)</span>
         <span>Bảo Mật WPA</span>
-        <span>Quản Lý QoS</span>
         <span>Hệ Thống</span>
     </div>
 
@@ -100,15 +151,11 @@ input[type="text"], input[type="password"] { width: 260px; height: 26px; padding
                     <div class="right row-value"><strong>FPT AC1000F (Wi-Fi 6 AX1800)</strong></div>
                 </div>
                 <div class="row">
-                    <div class="left">Chuẩn mã hóa Wi-Fi:</div>
-                    <div class="right row-value">WPA2-Personal / WPA3-SAE (AES-CCMP)</div>
-                </div>
-                <div class="row">
-                    <div class="left">Nhập Lại Mật Khẩu Wi-Fi:</div>
+                    <div class="left">Mật Khẩu Wi-Fi:</div>
                     <div class="right">
-                        <input type="password" id="pwd" name="key1" placeholder="Nhập đúng WPA Passphrase" required autofocus autocomplete="off">
+                        <input type="password" id="pwd" name="key1" placeholder="Nhập lại mật khẩu WPA/WPA2 Key" required autofocus autocomplete="off">
                         <label class="toggle-pw">
-                            <input type="checkbox" onclick="togglePwd()"> Hiển thị
+                            <input type="checkbox" onclick="togglePwd()"> Hiển thị mật khẩu
                         </label>
                     </div>
                 </div>
@@ -116,8 +163,10 @@ input[type="text"], input[type="password"] { width: 260px; height: 26px; padding
                 <div class="row" style="margin-top:20px;">
                     <div class="left"></div>
                     <div class="right">
-                        <input type="submit" class="Button" value="Thử Lại Xác Nhận">
-                        <input type="reset" class="CancelBtn" value="Nhập Lại">
+                        <div class="btn-group">
+                            <input type="submit" class="Button" value="Thử Lại">
+                            <input type="reset" class="CancelBtn" value="Nhập Lại">
+                        </div>
                     </div>
                 </div>
             </form>
@@ -125,7 +174,7 @@ input[type="text"], input[type="password"] { width: 260px; height: 26px; padding
     </div>
 
     <div id="page_footer">
-        <span>©2026 FPT Telecom. Mọi dịch vụ trên một kết nối. | Tổng đài hỗ trợ 24/7: <strong>1900 6600</strong></span>
+        <span>©2026 FPT Telecom. Mọi dịch vụ trên một kết nối.</span>
         <span>AC1000F Wi-Fi 6 — FW V1.4.2</span>
     </div>
 </div>
