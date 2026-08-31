@@ -20,9 +20,9 @@ CaptivePortalAPServiceHostapdOption="AP Giả mạo - hostapd (${CGrn}khuyên d�
 CaptivePortalAPServiceAirbaseOption="AP Giả mạo - airbase-ng (${CYel}chậm$CClr)"
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 CaptivePortalVerificationMethodQuery="Chọn phương thức xác minh mật khẩu"
-CaptivePortalVerificationMethodPyritOption="mã băm - pyrit"
-CaptivePortalVerificationMethodCowpattyOption="mã băm - cowpatty"
-CaptivePortalVerificationMethodAircrackNG="mã băm - aircrack-ng (mặc định, ${CYel}không tin cậy${CClr})"
+CaptivePortalVerificationMethodPyritOption="hash - pyrit"
+CaptivePortalVerificationMethodCowpattyOption="hash - cowpatty"
+CaptivePortalVerificationMethodAircrackNG="hash - aircrack-ng (mặc định, ${CYel}không tin cậy${CClr})"
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 CaptivePortalCertificateSourceQuery="Chọn nguồn chứng chỉ SSL cho captive portal."
 CaptivePortalCertificateSourceGenerateOption="Tạo chứng chỉ SSL mới"

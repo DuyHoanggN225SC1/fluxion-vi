@@ -245,7 +245,7 @@ captive_portal_unset_authenticator() {
   if [ ! "$CaptivePortalAuthenticatorMode" ]; then return 0; fi
 
   case "$CaptivePortalAuthenticatorMode" in
-    "hash"*)
+    "hash"*|"mã băm"*)
       echo "Unset hash is done automatically." > $FLUXIONOutputDevice ;;
   esac
 
@@ -257,7 +257,7 @@ captive_portal_unset_authenticator() {
 captive_portal_set_authenticator() {
   if [ "$CaptivePortalAuthenticatorMode" ]; then
     case "$CaptivePortalAuthenticatorMode" in
-      "hash"*)
+      "hash"*|"mã băm"*)
         if [ "$CaptivePortalHashPath" ]; then
           echo "Captive Portal authentication mode is already set, skipping!" \
             > $FLUXIONOutputDevice
@@ -311,7 +311,7 @@ captive_portal_set_authenticator() {
   # Process the authentication method selected.
   local result=1 # Assume failure at first.
   case "$CaptivePortalAuthenticatorMode" in
-    "hash"*)
+    "hash"*|"mã băm"*)
       # Pass default path if no path is set yet.
       if [ ! "$CaptivePortalHashPath" ]; then
         CaptivePortalHashPath="$FLUXIONPath/attacks/Handshake Snooper/handshakes/$FluxionTargetSSIDClean-$FluxionTargetMAC.cap"
@@ -899,7 +899,7 @@ while [ \$AuthenticatorState = \"running\" ]; do
 
 " >>"$FLUXIONWorkspacePath/captive_portal_authenticator.sh"
 
-  if [[ "$CaptivePortalAuthenticatorMode" = "hash"* ]]; then
+  if [[ "$CaptivePortalAuthenticatorMode" = "hash"* || "$CaptivePortalAuthenticatorMode" = "mã băm"* ]]; then
     case "$CaptivePortalAuthenticatorMode" in
       # Cowpatty
       "$CaptivePortalVerificationMethodCowpattyOption")
@@ -969,7 +969,7 @@ while [ \$AuthenticatorState = \"running\" ]; do
 
     echo -ne \"\033[K\033[u\"" >>"$FLUXIONWorkspacePath/captive_portal_authenticator.sh"
 
-  if [[ "$CaptivePortalAuthenticatorMode" = "hash"* ]]; then
+  if [[ "$CaptivePortalAuthenticatorMode" = "hash"* || "$CaptivePortalAuthenticatorMode" = "mã băm"* ]]; then
     echo "
     sleep 1" >>"$FLUXIONWorkspacePath/captive_portal_authenticator.sh"
   fi
@@ -1019,7 +1019,7 @@ Mac: \$ClientMAC (\$ClientBrand)
 IP: \$ClientIP
 \" >\"$CaptivePortalNetLog/$targetSSIDCleanNormalized-$FluxionTargetMAC.log\"" >>"$FLUXIONWorkspacePath/captive_portal_authenticator.sh"
 
-  if [[ "$CaptivePortalAuthenticatorMode" = "hash"* ]]; then
+  if [[ "$CaptivePortalAuthenticatorMode" = "hash"* || "$CaptivePortalAuthenticatorMode" = "mã băm"* ]]; then
 #    echo "
 # aircrack-ng -a 2 -b $FluxionTargetMAC -0 -s \"$CaptivePortalHashPath\" -w \"$FLUXIONWorkspacePath/candidate.txt\" && echo && echo -e \"The password was saved in "$CRed"$CaptivePortalNetLog/$targetSSIDCleanNormalized-$FluxionTargetMAC.log"$CClr"\"\
 #" >>"$FLUXIONWorkspacePath/captive_portal_authenticator.sh"
